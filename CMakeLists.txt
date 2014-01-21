@@ -1,0 +1,48 @@
+cmake_minimum_required( 2.8 )
+project( glfw-c++ )
+
+set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
+set( GLFW-CXX_BUILD_SHARED_LIBS TRUE CACHE BOOL "Build shared llibraries." )
+set( GLFW-CXX_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation." )
+
+if(CMAKE_COMPILER_IS_GNUCXX)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif()
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/;${CMAKE_MODULE_PATH}")
+
+find_package( glfw REQUIRED )
+
+if( GLFW_FOUND )
+	include_directories(${GLFW_INCLUDE_DIR})
+else()
+	set(GLFW_ROOT "" CACHE PATH "GLFW top-level directory")
+	message("\n-> GLFW directory not found. Set GLFW_ROOT to GLFW's top-level path;")
+	message("--> Containing \"include\"  and \"lib\" directories.")
+endif()
+
+if( GLFW-CXX_BUILD_SHARED_LIBS )
+        set( LIB_TYPE SHARED )
+else()
+        set( LIB_TYPE STATIC )
+endif()
+
+set(SRC_DIR "src")
+set(INC_DIR "include")
+
+set(
+	SOURCES
+
+)
+
+include_directories( ${INC_DIR} )
+
+add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
+
+if( GLFW-CXX_BUILD_DOC )
+	add_subdirectory( doc )
+endif()
+
+install(
+	TARGETS ${CMAKE_PROJECT_NAME}
+)
