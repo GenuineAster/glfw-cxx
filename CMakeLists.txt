@@ -1,4 +1,4 @@
-cmake_minimum_required( 2.8 )
+cmake_minimum_required( VERSION 2.8 )
 project( glfw-c++ )
 
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
@@ -29,10 +29,13 @@ endif()
 
 set(SRC_DIR "src")
 set(INC_DIR "include")
+set(TEST_DIR "test")
 
 set(
 	SOURCES
-
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/glfw-c++.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.hpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
 )
 
 include_directories( ${INC_DIR} )
@@ -42,7 +45,3 @@ add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
 if( GLFW-CXX_BUILD_DOC )
 	add_subdirectory( doc )
 endif()
-
-install(
-	TARGETS ${CMAKE_PROJECT_NAME}
-)
