@@ -6,24 +6,28 @@ namespace glfw
 {
 	using vidmode = GLFWvidmode;
 	using gammaramp = GLFWgammaramp;
+	using monitorfun = GLFWmonitorfun;
 
 	class Monitor
 	{
 	private:
-		GLFWmonitor* monitor;
+		GLFWmonitor* m_monitor;
 
 	public:
-		static Monitor GetPrimaryMonitor();
 		static const std::list<Monitor> GetMonitors();
-		const std::list<vidmode*> GetVideoModes() const;
-		const vidmode &GetVideoMode() const;
+		static const Monitor GetPrimaryMonitor();
+		const int GetPosX() const;
+		const int GetPosY() const;
 		const int GetPhysicalSizeX() const;
 		const int GetPhysicalSizeY() const;
 		const std::string GetName() const;
+		const monitorfun SetCallback(monitorfun cbfun);
+		const std::list<vidmode> GetVideoModes() const;
+		const vidmode &GetVideoMode() const;
+		void SetGamma(float gamma);
 		const gammaramp &GetGammaRamp() const;
 		void SetGammaRamp(const gammaramp &ramp);
-		void setGamma(float gamma);
 
-		Monitor(GLFWmonitor* monitor_);
+		Monitor(GLFWmonitor* monitor);
 	};
 }

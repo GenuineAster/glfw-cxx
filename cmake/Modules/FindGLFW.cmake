@@ -20,51 +20,50 @@
 # Allow the user to select to link to a shared library or to a static library.
 
 #Search for the include file...
-FIND_PATH(GLFW_INCLUDE_DIR GL/glfw.h DOC "Path to GLFW include directory."
+
+FIND_PATH(GLFW_INCLUDE_DIRS GLFW/glfw3.h DOC "Path to GLFW include directory."
   HINTS
   $ENV{GLFW_ROOT}
-  PATH_SUFFIX include
+  PATH_SUFFIX include #For finding the include file under the root of the glfw expanded archive, typically on Windows.
   PATHS
   /usr/include/
   /usr/local/include/
-  # By default headers are under GL subfolder
-  /usr/include/GL
-  /usr/local/include/GL
-  ${GLFW_ROOT_DIR}/include/ # added by ptr
+  # By default headers are under GLFW subfolder
+  /usr/include/GLFW
+  /usr/local/include/GLFW
+  ${GLFW_ROOT}
+  ${GLFW_ROOT}/include/ # added by ptr
 )
 
-FIND_LIBRARY(GLFW_LIBRARY_TEMP DOC "Absolute path to GLFW library."
-  NAMES glfw GLFW.lib
+SET(GLFW_LIB_NAMES libglfw3.a glfw3 GLFW3.lib)
+
+FIND_LIBRARY(GLFW_LIBRARIES DOC "Absolute path to GLFW library."
+  NAMES ${GLFW_LIB_NAMES}
   HINTS
   $ENV{GLFW_ROOT}
-  # In the expanded GLFW source archive. Should be uncommon, but whatever.
-  PATH_SUFFIXES lib/win32 lib/cocoa lib/x11
+  PATH_SUFFIXES lib/win32 #For finding the library file under the root of the glfw expanded archive, typically on Windows.
   PATHS
   /usr/local/lib
   /usr/lib
-  ${GLFW_ROOT_DIR}/lib-msvc100/release # added by ptr
+  ${GLFW_ROOT}/lib
+  ${GLFW_ROOT}/lib-msvc100/release # added by ptr
 )
+IF( APPLE )
+    find_library(IOKIT NAMES IOKit)
+    #find_library(APPKIT NAMES AppKit)
+    find_library(COREVIDEO NAMES CoreVideo)
+    find_library(COCOA NAMES Cocoa)
+    SET(GLFW_LIBRARIES ${GLFW_LIBRARIES} ${IOKIT} ${COREVIDEO} ${COCOA})
+endif( APPLE )
 
-SET(GLFW_FOUND "NO")
-IF(GLFW_LIBRARY_TEMP AND GLFW_INCLUDE_DIR)
-  SET(GLFW_FOUND "YES")
-  message(STATUS "Found GLFW: ${GLFW_LIBRARY_TEMP}")
+IF(GLFW_LIBRARIES AND GLFW_INCLUDE_DIRS)
+  SET(GLFW_FOUND TRUE)
+  message(STATUS "Found GLFW3: ${GLFW_LIBRARIES}")
+  message(STATUS "Found GLFW3: ${GLFW_INCLUDE_DIRS}")
+ELSE()
+  message(STATUS "GLFW3 NOT found!")
+ENDIF(GLFW_LIBRARIES AND GLFW_INCLUDE_DIRS)
 
-  # For MinGW library
-  IF(MINGW)
-    SET(MINGW32_LIBRARY mingw32 CACHE STRING "mwindows for MinGW")
-    SET(GLFW_LIBRARY_TEMP ${MINGW32_LIBRARY} ${GLFW_LIBRARY_TEMP})
-  ENDIF(MINGW)
-
-  # OS X uses the Cocoa port so we need to link against Cocoa
-  IF(APPLE)
-    SET(GLFW_LIBRARY_TEMP ${GLFW_LIBRARY_TEMP} "-framework Cocoa -framework IOKit")
-    SET(GLFW_LIBRARY ${GLFW_LIBRARY_TEMP})
-  ENDIF(APPLE)
-
-  # Set the final string here so the GUI reflects the final state.
-  SET(GLFW_LIBRARY ${GLFW_LIBRARY_TEMP} CACHE STRING "Where the GLFW Library can be found")
-  # Set the temp variable to INTERNAL so it is not seen in the CMake GUI
-  SET(GLFW_LIBRARY_TEMP "" CACHE INTERNAL "")
-ENDIF(GLFW_LIBRARY_TEMP AND GLFW_INCLUDE_DIR)
-
+#if(GLFW_FOUND)
+#  MARK_AS_ADVANCED(GLFW_INCLUDE_DIRS GLFW_LIBRARIES)
+#endif(GLFW_FOUND)

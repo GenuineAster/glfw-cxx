@@ -42,6 +42,15 @@ include_directories( ${INC_DIR} )
 
 add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
 
+if( GLFW_FOUND )
+	target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
+endif()
+
+if( WIN32 )
+	target_link_libraries(${CMAKE_PROJECT_NAME} gdi32)
+	target_link_libraries(${CMAKE_PROJECT_NAME} opengl32)
+endif()
+
 if( GLFW-CXX_BUILD_DOC )
 	add_subdirectory( doc )
 endif()
