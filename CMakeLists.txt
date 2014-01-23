@@ -13,8 +13,10 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/;${CMAKE_MODULE_PATH}")
 
 find_package( glfw REQUIRED )
 
-if( GLFW_FOUND )
-	include_directories(${GLFW_INCLUDE_DIR})
+if(UNIX)
+	include_directories(${GLFW_INCLUDE_DIRS})
+elseif(GLFW_FOUND)
+	include_directories(${GLFW_INCLUDE_DIRS})
 else()
 	set(GLFW_ROOT "" CACHE PATH "GLFW top-level directory")
 	message("\n-> GLFW directory not found. Set GLFW_ROOT to GLFW's top-level path;")
@@ -42,7 +44,10 @@ include_directories( ${INC_DIR} )
 
 add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
 
-if( GLFW_FOUND )
+
+if( UNIX )
+	target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
+elseif( GLFW_FOUND )
 	target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
 endif()
 
