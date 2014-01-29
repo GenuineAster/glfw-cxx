@@ -3,6 +3,104 @@
 
 namespace glfw
 {
+	int Window::GetInputMode(int mode) const
+	{
+		return glfwGetInputMode(m_window, mode);
+	}
+
+	void Window::SetInputMode(int mode, int value)
+	{
+		glfwSetInputMode(m_window, mode, value);
+	}
+
+	int Window::GetKey(int key) const
+	{
+		return glfwGetKey(m_window, key);
+	}
+
+	int Window::GetMouseButton(int button) const
+	{
+		return glfwGetMouseButton(m_window, button);
+	}
+
+	double Window::GetCursorPosX() const
+	{
+		double x,y;
+		glfwGetCursorPos(m_window, &x, &y);
+		return x;
+	}
+
+	double Window::GetCursorPosY() const
+	{
+		double x,y;
+		glfwGetCursorPos(m_window, &x, &y);
+		return y;
+	}
+
+	void Window::SetCursorPos(double x, double y)
+	{
+		glfwSetCursorPos(m_window, x, y);
+	}
+
+	int Window::JoystickPresent(int joy)
+	{
+		return glfwJoystickPresent(joy);
+	}
+
+	std::vector<float> Window::GetJoystickAxes(int joy)
+	{
+		int count;
+		const float* temp = glfwGetJoystickAxes(joy, &count);
+		return std::vector<float>(*temp, count);
+	}
+
+	const std::vector<uint8_t> Window::GetJoystickButtons(int joy)
+	{
+		int count;
+		const uint8_t* temp = glfwGetJoystickButtons(joy, &count);
+		return std::vector<uint8_t>(*temp, count);
+	}
+
+	std::string Window::GetJoystickName(int joy)
+	{
+		return std::string(glfwGetJoystickName(joy));
+	}
+
+	keyfun Window::SetKeyCallback(keyfun cbfun)
+	{
+		glfwSetKeyCallback(m_window, cbfun);
+	}
+
+	charfun Window::SetCharCallback(charfun cbfun)
+	{
+		glfwSetCharCallback(m_window, cbfun);
+	}
+
+	mousebuttonfun Window::SetMouseButtonCallback(mousebuttonfun cbfun)
+	{
+		glfwSetMouseButtonCallback(m_window, cbfun);
+	}
+
+	cursorposfun Window::SetCursorPosCallback(cursorposfun cbfun)
+	{
+		glfwSetCursorPosCallback(m_window, cbfun);
+	}
+
+	cursorenterfun Window::SetCursorEnterCallback(cursorenterfun cbfun)
+	{
+		glfwSetCursorEnterCallback(m_window, cbfun);
+	}
+
+	scrollfun Window::SetScrollCallback(scrollfun cbfun)
+	{
+		glfwSetScrollCallback(m_window, cbfun);
+	}
+
+	dropfun Window::SetDropCallback(dropfun cbfun)
+	{
+		glfwSetDropCallback(m_window, cbfun);
+	}
+
 	void Window::SwapBuffers()
 	{
 		glfwSwapBuffers(m_window);

@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 #include <glfw-c++/Monitor.hpp>
 #include <string>
+#include <vector>
 
 namespace glfw
 {
@@ -12,17 +13,62 @@ namespace glfw
 	using windowiconifyfun = GLFWwindowiconifyfun;
 	using framebuffersizefun = GLFWframebuffersizefun;
 
+	using mousebuttonfun = GLFWmousebuttonfun;
+	using cursorposfun = GLFWcursorposfun;
+	using cursorenterfun = GLFWcursorenterfun;
+	using scrollfun = GLFWscrollfun;
+	using keyfun = GLFWkeyfun;
+	using charfun = GLFWcharfun;
+	using dropfun = GLFWdropfun;
+
 	class Window
 	{
 	private:
 		GLFWwindow* m_window;
 	public:
 
+		int GetInputMode(int mode) const;
+
+		void SetInputMode(int mode, int value);
+
+		int GetKey(int key) const;
+
+		int GetMouseButton(int button) const;
+
+		double GetCursorPosX() const;
+
+		double GetCursorPosY() const;
+
+		void SetCursorPos(double x, double y);
+
+		static int JoystickPresent(int joy);
+
+		static std::vector<float> GetJoystickAxes(int joy);
+
+		static const std::vector<uint8_t> GetJoystickButtons(int joy);
+
+		static std::string GetJoystickName(int joy);
+
+		keyfun SetKeyCallback(keyfun cbfun);
+
+		charfun SetCharCallback(charfun cbfun);
+
+		mousebuttonfun SetMouseButtonCallback(mousebuttonfun cbfun);
+
+		cursorposfun SetCursorPosCallback(cursorposfun cbfun);
+
+		cursorenterfun SetCursorEnterCallback(cursorenterfun cbfun);
+
+		scrollfun SetScrollCallback(scrollfun cbfun);
+
+		dropfun SetDropCallback(dropfun cbfun);
+
 		void SwapBuffers();
 
 		void MakeContextCurrent();
 
 		void SetClipboard(std::string clipboard);
+
 		std::string GetClipboard() const;
 
 		static void DefaultHints();
