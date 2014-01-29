@@ -220,6 +220,11 @@ namespace glfw
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 	}
 
+	Window::Window(GLFWwindow* window)
+	{
+		m_window = window;
+	}
+
 	Window::~Window()
 	{
 		glfwDestroyWindow(m_window);

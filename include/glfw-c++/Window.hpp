@@ -74,6 +74,7 @@ namespace glfw
 		Window(int width, int height, const std::string &title, const Monitor &monitor);
 		Window(int width, int height, const std::string &title, const Window &share);
 		Window(int width, int height, const std::string &title);
+		Window(GLFWwindow* window);
 		~Window();
 	};
 }
