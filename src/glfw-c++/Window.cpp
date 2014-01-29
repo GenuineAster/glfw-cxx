@@ -164,6 +164,42 @@ namespace glfw
 		return m_window;
 	}
 
+	windowposfun Window::SetPosCallback(windowposfun cbfun)
+	{
+		return glfwSetWindowPosCallback(m_window, cbfun);
+	}
+
+	windowsizefun Window::SetSizeCallback(windowsizefun cbfun)
+	{
+		return glfwSetWindowSizeCallback(m_window, cbfun);
+	}
+
+	windowclosefun Window::SetCloseCallback(windowclosefun cbfun)
+	{
+		return glfwSetWindowCloseCallback(m_window, cbfun);
+	}
+
+	windowrefreshfun Window::SetRefreshCallback(windowrefreshfun cbfun)
+	{
+		return glfwSetWindowRefreshCallback(m_window, cbfun);
+	}
+
+	windowfocusfun Window::SetFocusCallback(windowfocusfun cbfun)
+	{
+		return glfwSetWindowFocusCallback(m_window, cbfun);
+	}
+
+	windowiconifyfun Window::SetIconifyCallback(windowiconifyfun cbfun)
+	{
+		return glfwSetWindowIconifyCallback(m_window, cbfun);
+	}
+
+	framebuffersizefun Window::SetFramebufferSizeCallback(framebuffersizefun cbfun)
+	{
+		return glfwSetFramebufferSizeCallback(m_window, cbfun);
+	}
+
+
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), share.GetRawPointerData());

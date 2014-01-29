@@ -4,6 +4,14 @@
 
 namespace glfw
 {
+	using windowposfun = GLFWwindowposfun;
+	using windowsizefun = GLFWwindowsizefun;
+	using windowclosefun = GLFWwindowclosefun;
+	using windowrefreshfun = GLFWwindowrefreshfun;
+	using windowfocusfun = GLFWwindowfocusfun;
+	using windowiconifyfun = GLFWwindowiconifyfun;
+	using framebuffersizefun = GLFWframebuffersizefun;
+
 	class Window
 	{
 	private:
@@ -53,6 +61,14 @@ namespace glfw
 		static void WaitEvents();
 
 		GLFWwindow* GetRawPointerData() const;
+
+		windowposfun SetPosCallback(windowposfun cbfun);
+		windowsizefun SetSizeCallback(windowsizefun cbfun);
+		windowclosefun SetCloseCallback(windowclosefun cbfun);
+		windowrefreshfun SetRefreshCallback(windowrefreshfun cbfun);
+		windowfocusfun SetFocusCallback(windowfocusfun cbfun);
+		windowiconifyfun SetIconifyCallback(windowiconifyfun cbfun);
+		framebuffersizefun SetFramebufferSizeCallback(framebuffersizefun cbfun);
 
 		Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share);
 		Window(int width, int height, const std::string &title, const Monitor &monitor);
