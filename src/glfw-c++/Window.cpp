@@ -2,8 +2,25 @@
 
 namespace glfw
 {
-	void Window::DefaultHints(){glfwDefaultWindowHints();}
-	void Window::Hint(int target, int hint){glfwWindowHint(target,hint);}
+	void Window::SetClipboard(std::string clipboard)
+	{
+		glfwSetClipboardString(m_window, clipboard.c_str());
+	}
+
+	std::string Window::GetClipboard() const
+	{
+		return std::string{glfwGetClipboardString(m_window)};
+	}
+
+	void Window::DefaultHints()
+	{
+		glfwDefaultWindowHints();
+	}
+	
+	void Window::Hint(int target, int hint)
+	{
+		glfwWindowHint(target,hint);
+	}
 
 	void Window::Create(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{

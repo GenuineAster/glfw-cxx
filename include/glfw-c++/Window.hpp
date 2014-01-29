@@ -1,5 +1,6 @@
 #include <GLFW/glfw3.h>
 #include <glfw-c++/Monitor.hpp>
+#include <string>
 
 namespace glfw
 {
@@ -8,6 +9,10 @@ namespace glfw
 	private:
 		GLFWwindow* m_window;
 	public:
+
+		void SetClipboard(std::string clipboard);
+		std::string GetClipboard() const;
+
 		static void DefaultHints();
 		static void Hint(int target, int hint);
 
