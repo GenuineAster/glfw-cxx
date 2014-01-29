@@ -28,7 +28,7 @@ namespace glfw
 		const gammaramp &GetGammaRamp() const;
 		void SetGammaRamp(const gammaramp &ramp);
 
-		GLFWmonitor* GetRawPointerData();
+		GLFWmonitor* GetRawPointerData() const;
 
 		Monitor(GLFWmonitor* monitor);
 	};

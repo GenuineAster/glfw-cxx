@@ -85,7 +85,7 @@ namespace glfw
 		glfwSetGammaRamp(m_monitor, &ramp);
 	}
 
-	GLFWmonitor* Monitor::GetRawPointerData()
+	GLFWmonitor* Monitor::GetRawPointerData() const
 	{
 		return m_monitor;
 	}
