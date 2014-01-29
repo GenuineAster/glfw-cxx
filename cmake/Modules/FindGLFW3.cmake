@@ -20,33 +20,28 @@
 # Allow the user to select to link to a shared library or to a static library.
 
 #Search for the include file...
-
-FIND_PATH(GLFW_INCLUDE_DIRS GLFW/glfw3.h DOC "Path to GLFW include directory."
-  HINTS
-  $ENV{GLFW_ROOT}
-  PATH_SUFFIX include #For finding the include file under the root of the glfw expanded archive, typically on Windows.
-  PATHS
+FIND_PATH(GLFW_INCLUDE_DIRS GLFW/glfw3.h
+  $ENV{PROGRAMFILES}/GLFW/include
   /usr/include/
   /usr/local/include/
   # By default headers are under GLFW subfolder
-  /usr/include/GLFW/
-  /usr/local/include/GLFW/
-  ${GLFW_ROOT}
-  ${GLFW_ROOT}/include/ # added by ptr
+  /usr/include/GLFW
+  /usr/local/include/GLFW
+  ${GLFW_ROOT}/include/
 )
 
-SET(GLFW_LIB_NAMES libglfw3.a glfw3 GLFW3.lib)
-
-FIND_LIBRARY(GLFW_LIBRARIES DOC "Absolute path to GLFW library."
-  NAMES ${GLFW_LIB_NAMES}
-  HINTS
-  $ENV{GLFW_ROOT}
-  PATH_SUFFIXES lib/win32 #For finding the library file under the root of the glfw expanded archive, typically on Windows.
+FIND_LIBRARY(GLFW_LIBRARIES
+  NAMES libglfw3.a glfw3 GLFW3.lib
   PATHS
-  /usr/local/lib/
-  /usr/lib/
-  ${GLFW_ROOT}/lib/
-  ${GLFW_ROOT}/lib-msvc100/release # added by ptr
+  /usr/lib64
+  /usr/lib
+  /usr/local/lib64
+  /usr/local/lib
+  /sw/lib
+  /opt/local/lib
+  ${GLFW_ROOT}/lib-msvc100/release
+  ${GLFW_ROOT}/lib
+  $ENV{PROGRAMFILES}/GLFW/lib
 )
 IF( APPLE )
     find_library(IOKIT NAMES IOKit)
@@ -56,18 +51,13 @@ IF( APPLE )
     SET(GLFW_LIBRARIES ${GLFW_LIBRARIES} ${IOKIT} ${COREVIDEO} ${COCOA})
 endif( APPLE )
 
-SET(GLFW_FOUND TRUE)
-
 IF(GLFW_LIBRARIES AND GLFW_INCLUDE_DIRS)
   SET(GLFW_FOUND TRUE)
   message(STATUS "Found GLFW3: ${GLFW_LIBRARIES}")
-  message(STATUS "Found GLFW3: ${GLFW_INCLUDE_DIRS}")
 ELSE()
   message(STATUS "GLFW3 NOT found!")
-  message(STATUS "GLFW3: ${GLFW_LIBRARIES}")
-  message(STATUS "GLFW3: ${GLFW_INCLUDE_DIRS}")
 ENDIF(GLFW_LIBRARIES AND GLFW_INCLUDE_DIRS)
 
-if(GLFW_FOUND)
-  MARK_AS_ADVANCED(GLFW_INCLUDE_DIRS GLFW_LIBRARIES)
-endif(GLFW_FOUND)
+#if(GLFW_FOUND)
+#  MARK_AS_ADVANCED(GLFW_INCLUDE_DIRS GLFW_LIBRARIES)
+#endif(GLFW_FOUND)

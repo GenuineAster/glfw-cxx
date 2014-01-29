@@ -11,7 +11,7 @@ endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/;${CMAKE_MODULE_PATH}")
 
-find_package( glfw REQUIRED )
+find_package( glfw3 REQUIRED )
 
 if(UNIX)
 	include_directories(${GLFW_INCLUDE_DIRS})
@@ -37,7 +37,11 @@ set(
 	SOURCES
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/glfw-c++.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Window.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Time.hpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Time.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Window.cpp
 )
 
 include_directories( ${INC_DIR} )
