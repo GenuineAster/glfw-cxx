@@ -46,6 +46,8 @@ namespace glfw
 		void PollEvents();
 		void WaitEvents();
 
+		GLFWwindow* GetRawPointerData();
+
 		Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share);
 		Window(int width, int height, const std::string &title, const Monitor &monitor);
 		Window(int width, int height, const std::string &title, const Window &share);
