@@ -18,6 +18,10 @@ namespace glfw
 		GLFWwindow* m_window;
 	public:
 
+		void SwapBuffers();
+
+		void MakeContextCurrent();
+
 		void SetClipboard(std::string clipboard);
 		std::string GetClipboard() const;
 

@@ -40,11 +40,13 @@ set(
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Window.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Time.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Version.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Context.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Error.hpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Time.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Window.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Version.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Context.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Error.cpp
 )
 

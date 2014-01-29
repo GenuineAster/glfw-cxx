@@ -1,7 +1,18 @@
 #include <glfw-c++/Window.hpp>
+#include <glfw-c++/Context.hpp>
 
 namespace glfw
 {
+	void Window::SwapBuffers()
+	{
+		glfwSwapBuffers(m_window);
+	}
+
+	void Window::MakeContextCurrent()
+	{
+		glfw::Context::MakeContextCurrent(*this);
+	}
+
 	void Window::SetClipboard(std::string clipboard)
 	{
 		glfwSetClipboardString(m_window, clipboard.c_str());
