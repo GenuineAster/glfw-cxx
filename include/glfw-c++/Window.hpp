@@ -1,4 +1,5 @@
 #include <GLFW/glfw3.h>
+#include <glfw-c++/Monitor.hpp>
 
 namespace glfw
 {
@@ -15,38 +16,38 @@ namespace glfw
 		void Create(int width, int height, const std::string &title, const Window &share);
 		void Create(int width, int height, const std::string &title);
 
-		int ShouldClose();
+		int ShouldClose() const;
 		void SetShouldClose(int value);
 
-		void SetWindowTitle(std::string title);
+		void SetTitle(std::string title);
 
-		int GetPosX();
-		int GetPosY();
+		int GetPosX() const;
+		int GetPosY() const;
 		void SetPos(int x, int y);
 
-		int GetSizeX();
-		int GetSizeY();
+		int GetSizeX() const;
+		int GetSizeY() const;
 		void SetSize(int x, int y);
 
-		int GetFramebufferSizeX();
-		int GetFramebufferSizeY();
+		int GetFramebufferSizeX() const;
+		int GetFramebufferSizeY() const;
 
 		void Iconify();
 		void Restore();
 		void Show();
 		void Hide();
 
-		const Monitor &getMonitor();
+		Monitor GetMonitor() const;
 
-		int GetAttrib(int attrib);
+		int GetAttrib(int attrib) const;
 
 		void SetUserPointer(void *pointer);
-		void* GetUserPointer();
+		void* GetUserPointer() const;
 
-		void PollEvents();
-		void WaitEvents();
+		static void PollEvents();
+		static void WaitEvents();
 
-		GLFWwindow* GetRawPointerData();
+		GLFWwindow* GetRawPointerData() const;
 
 		Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share);
 		Window(int width, int height, const std::string &title, const Monitor &monitor);
