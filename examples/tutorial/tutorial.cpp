@@ -1,4 +1,4 @@
-#include <glfw-c++/glfw-c++.hpp>
+#include <glfw-cxx/glfw-cxx.hpp>
 #include <cstdlib>
 #include <iostream>
 
