@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 #include <list>
 #include <string>
+#include <glfw-c++/Vector2.hpp>
 
 namespace glfw
 {

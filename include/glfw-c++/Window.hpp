@@ -2,6 +2,7 @@
 #include <glfw-c++/Monitor.hpp>
 #include <string>
 #include <vector>
+#include <glfw-c++/Vector2.hpp>
 
 namespace glfw
 {

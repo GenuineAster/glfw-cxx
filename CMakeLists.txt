@@ -42,6 +42,7 @@ set(
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Version.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Context.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Error.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Vector2.hpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Time.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Window.cpp
