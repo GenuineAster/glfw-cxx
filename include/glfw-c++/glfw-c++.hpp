@@ -5,3 +5,4 @@
 #include <glfw-c++/Context.hpp>
 #include <glfw-c++/Error.hpp>
 #include <glfw-c++/Vector2.hpp>
+#include <glfw-c++/VideoMode.hpp>
