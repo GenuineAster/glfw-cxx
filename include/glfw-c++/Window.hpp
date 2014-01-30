@@ -1,3 +1,4 @@
+#pragma once
 #include <GLFW/glfw3.h>
 #include <glfw-c++/Monitor.hpp>
 #include <string>
