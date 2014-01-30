@@ -17,32 +17,18 @@ namespace glfw
 		return Monitor(glfwGetPrimaryMonitor());
 	}
 
-	const int Monitor::GetPosX() const
+	const MonitorPos Monitor::GetPos() const
 	{
 		int x,y;
 		glfwGetMonitorPos(m_monitor, &x, &y);
-		return x;
+		return MonitorPos(x,y);
 	}
 
-	const int Monitor::GetPosY() const 
-	{
-		int x,y;
-		glfwGetMonitorPos(m_monitor, &x, &y);
-		return y;
-	}
-
-	const int Monitor::GetPhysicalSizeX() const
+	const MonitorSize Monitor::GetPhysicalSize() const
 	{
 		int x,y;
 		glfwGetMonitorPhysicalSize(m_monitor, &x, &y);
-		return x;
-	}
-
-	const int Monitor::GetPhysicalSizeY() const
-	{
-		int x,y;
-		glfwGetMonitorPhysicalSize(m_monitor, &x, &y);
-		return y;
+		return MonitorSize(x,y);
 	}
 
 	const std::string Monitor::GetName() const

@@ -17,10 +17,8 @@ namespace glfw
 	public:
 		static const std::list<Monitor> GetMonitors();
 		static const Monitor GetPrimaryMonitor();
-		const int GetPosX() const;
-		const int GetPosY() const;
-		const int GetPhysicalSizeX() const;
-		const int GetPhysicalSizeY() const;
+		const MonitorPos GetPos() const;
+		const MonitorSize GetPhysicalSize() const;
 		const std::string GetName() const;
 		const monitorfun SetCallback(monitorfun cbfun);
 		const std::list<vidmode> GetVideoModes() const;
