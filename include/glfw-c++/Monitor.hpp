@@ -2,10 +2,10 @@
 #include <list>
 #include <string>
 #include <glfw-c++/Vector2.hpp>
+#include <glfw-c++/VideoMode.hpp>
 
 namespace glfw
 {
-	using vidmode = GLFWvidmode;
 	using gammaramp = GLFWgammaramp;
 	using monitorfun = GLFWmonitorfun;
 
@@ -24,8 +24,8 @@ namespace glfw
 		const MonitorSize GetPhysicalSize() const;
 		const std::string GetName() const;
 		const monitorfun SetCallback(monitorfun cbfun);
-		const std::list<vidmode> GetVideoModes() const;
-		const vidmode &GetVideoMode() const;
+		const std::list<VideoMode> GetVideoModes() const;
+		const VideoMode GetVideoMode() const;
 		void SetGamma(float gamma);
 		const gammaramp &GetGammaRamp() const;
 		void SetGammaRamp(const gammaramp &ramp);

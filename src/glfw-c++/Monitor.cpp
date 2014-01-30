@@ -41,19 +41,19 @@ namespace glfw
 		return glfwSetMonitorCallback(cbfun);
 	}
 
-	const std::list<vidmode> Monitor::GetVideoModes() const
+	const std::list<VideoMode> Monitor::GetVideoModes() const
 	{
 		int count;
-		const vidmode* video_modes_ptr = glfwGetVideoModes(m_monitor, &count);
-		std::list<vidmode> video_modes;
+		const GLFWvidmode* video_modes_ptr = glfwGetVideoModes(m_monitor, &count);
+		std::list<VideoMode> video_modes;
 		for(int i = 0; i < count; i++)
-			video_modes.push_back(video_modes_ptr[i]);
+			video_modes.push_back(VideoMode(video_modes_ptr[i]));
 		return video_modes;	
 	}
 
-	const vidmode &Monitor::GetVideoMode() const
+	const VideoMode Monitor::GetVideoMode() const
 	{
-		return *glfwGetVideoMode(m_monitor);
+		return VideoMode(*glfwGetVideoMode(m_monitor));
 	}
 
 	void Monitor::SetGamma(float gamma)
