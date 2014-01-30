@@ -35,10 +35,9 @@ namespace glfw
 
 		int GetMouseButton(int button) const;
 
-		double GetCursorPosX() const;
+		CursorPos GetCursorPos() const;
 
-		double GetCursorPosY() const;
-
+		void SetCursorPos(CursorPos pos);
 		void SetCursorPos(double x, double y);
 
 		static int JoystickPresent(int joy);
@@ -82,16 +81,15 @@ namespace glfw
 
 		void SetTitle(std::string title);
 
-		int GetPosX() const;
-		int GetPosY() const;
+		WindowPos GetPos() const;
+		void SetPos(WindowPos pos);
 		void SetPos(int x, int y);
 
-		int GetSizeX() const;
-		int GetSizeY() const;
+		WindowSize GetSize() const;
+		void SetSize(WindowSize size);
 		void SetSize(int x, int y);
 
-		int GetFramebufferSizeX() const;
-		int GetFramebufferSizeY() const;
+		FramebufferSize GetFramebufferSize() const;
 
 		void Iconify();
 		void Restore();

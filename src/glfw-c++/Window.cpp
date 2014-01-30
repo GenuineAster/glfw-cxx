@@ -23,18 +23,16 @@ namespace glfw
 		return glfwGetMouseButton(m_window, button);
 	}
 
-	double Window::GetCursorPosX() const
+	CursorPos Window::GetCursorPos() const
 	{
 		double x,y;
 		glfwGetCursorPos(m_window, &x, &y);
-		return x;
+		return CursorPos(x,y);
 	}
 
-	double Window::GetCursorPosY() const
+	void Window::SetCursorPos(CursorPos pos)
 	{
-		double x,y;
-		glfwGetCursorPos(m_window, &x, &y);
-		return y;
+		glfwSetCursorPos(m_window, pos.x, pos.y);
 	}
 
 	void Window::SetCursorPos(double x, double y)
@@ -161,18 +159,16 @@ namespace glfw
 		glfwSetWindowTitle(m_window, title.c_str());
 	}
 
-	int Window::GetPosX() const
+	WindowPos Window::GetPos() const
 	{
 		int x,y;
 		glfwGetWindowPos(m_window, &x, &y);
-		return x;
+		return WindowPos(x, y);
 	}
 
-	int Window::GetPosY() const
+	void Window::SetPos(WindowPos pos)
 	{
-		int x,y;
-		glfwGetWindowPos(m_window, &x, &y);
-		return y;
+		glfwSetWindowPos(m_window, pos.x, pos.y);
 	}
 
 	void Window::SetPos(int x, int y)
@@ -180,18 +176,16 @@ namespace glfw
 		glfwSetWindowPos(m_window, x, y);
 	}
 
-	int Window::GetSizeX() const
+	WindowSize Window::GetSize() const
 	{
 		int x,y;
 		glfwGetWindowSize(m_window, &x, &y);
-		return x;
+		return WindowSize(x,y);
 	}
 
-	int Window::GetSizeY() const
+	void Window::SetSize(WindowSize size)
 	{
-		int x,y;
-		glfwGetWindowSize(m_window, &x, &y);
-		return y;
+		glfwSetWindowSize(m_window, size.x, size.y);
 	}
 
 	void Window::SetSize(int x, int y)
@@ -199,18 +193,11 @@ namespace glfw
 		glfwSetWindowSize(m_window, x, y);
 	}
 
-	int Window::GetFramebufferSizeX() const
+	FramebufferSize Window::GetFramebufferSize() const
 	{
 		int x,y;
 		glfwGetFramebufferSize(m_window, &x, &y);
-		return x;
-	}
-
-	int Window::GetFramebufferSizeY() const
-	{
-		int x,y;
-		glfwGetFramebufferSize(m_window, &x, &y);
-		return y;
+		return FramebufferSize(x,y);
 	}
 
 	void Window::Iconify()
