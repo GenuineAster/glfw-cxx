@@ -316,6 +316,8 @@ namespace glfw
 		m_window = window;
 	}
 
+	Window::Window() {}
+
 	Window::~Window()
 	{
 		glfwDestroyWindow(m_window);
