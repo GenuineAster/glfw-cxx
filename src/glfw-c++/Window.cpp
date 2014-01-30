@@ -96,11 +96,6 @@ namespace glfw
 		glfwSetScrollCallback(m_window, cbfun);
 	}
 
-	dropfun Window::SetDropCallback(dropfun cbfun)
-	{
-		glfwSetDropCallback(m_window, cbfun);
-	}
-
 	void Window::SwapBuffers()
 	{
 		glfwSwapBuffers(m_window);

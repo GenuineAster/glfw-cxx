@@ -19,7 +19,6 @@ namespace glfw
 	using scrollfun = GLFWscrollfun;
 	using keyfun = GLFWkeyfun;
 	using charfun = GLFWcharfun;
-	using dropfun = GLFWdropfun;
 
 	class Window
 	{
@@ -60,8 +59,6 @@ namespace glfw
 		cursorenterfun SetCursorEnterCallback(cursorenterfun cbfun);
 
 		scrollfun SetScrollCallback(scrollfun cbfun);
-
-		dropfun SetDropCallback(dropfun cbfun);
 
 		void SwapBuffers();
 
