@@ -73,7 +73,7 @@ namespace glfw
 		m_vidmode.refreshRate = refreshrate;
 	}
 
-	GLFWvidmode* VideoMode::GetRawDataPointer()
+	GLFWvidmode* VideoMode::GetRawPointerData()
 	{
 		return &m_vidmode;
 	}

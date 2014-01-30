@@ -18,7 +18,7 @@ namespace glfw
 		unsigned int GetSize();
 		void SetSize(unsigned int size);
 
-		GLFWgammaramp* GetRawDataPointer();
+		GLFWgammaramp* GetRawPointerData();
 
 		GammaRamp(GLFWgammaramp gammaramp);
 		GammaRamp();

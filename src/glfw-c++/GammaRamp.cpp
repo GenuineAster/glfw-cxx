@@ -42,7 +42,7 @@ namespace glfw
 		m_gammaramp.size = size;
 	}
 
-	GLFWgammaramp* GammaRamp::GetRawDataPointer()
+	GLFWgammaramp* GammaRamp::GetRawPointerData()
 	{
 		return &m_gammaramp;
 	}

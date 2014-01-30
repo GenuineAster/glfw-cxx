@@ -27,7 +27,7 @@ namespace glfw
 		int GetRefreshRate() const;
 		void SetRefreshRate(int refreshrate);
 
-		GLFWvidmode* GetRawDataPointer();
+		GLFWvidmode* GetRawPointerData();
 
 		VideoMode(int width, int height);
 		VideoMode(int width, int height, int refreshrate);
