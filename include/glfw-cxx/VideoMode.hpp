@@ -1,6 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
-#include <glfw-c++/Vector2.hpp>
+#include <glfw-cxx/Vector2.hpp>
 
 namespace glfw
 {

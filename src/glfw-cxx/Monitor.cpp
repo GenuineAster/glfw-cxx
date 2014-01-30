@@ -1,4 +1,4 @@
-#include <glfw-c++/Monitor.hpp>
+#include <glfw-cxx/Monitor.hpp>
 
 namespace glfw
 {

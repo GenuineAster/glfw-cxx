@@ -1,5 +1,5 @@
-#include <glfw-c++/Window.hpp>
-#include <glfw-c++/Context.hpp>
+#include <glfw-cxx/Window.hpp>
+#include <glfw-cxx/Context.hpp>
 
 namespace glfw
 {

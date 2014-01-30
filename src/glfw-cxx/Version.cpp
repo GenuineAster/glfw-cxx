@@ -1,4 +1,4 @@
-#include <glfw-c++/Version.hpp>
+#include <glfw-cxx/Version.hpp>
 
 namespace glfw
 {

@@ -1,4 +1,4 @@
-#include <glfw-c++/Error.hpp>
+#include <glfw-cxx/Error.hpp>
 
 namespace glfw
 {

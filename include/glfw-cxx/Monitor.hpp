@@ -2,9 +2,9 @@
 #include <GLFW/glfw3.h>
 #include <list>
 #include <string>
-#include <glfw-c++/Vector2.hpp>
-#include <glfw-c++/VideoMode.hpp>
-#include <glfw-c++/GammaRamp.hpp>
+#include <glfw-cxx/Vector2.hpp>
+#include <glfw-cxx/VideoMode.hpp>
+#include <glfw-cxx/GammaRamp.hpp>
 
 namespace glfw
 {

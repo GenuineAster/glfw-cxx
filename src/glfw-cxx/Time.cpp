@@ -1,4 +1,4 @@
-#include <glfw-c++/Time.hpp>
+#include <glfw-cxx/Time.hpp>
 
 namespace glfw
 {

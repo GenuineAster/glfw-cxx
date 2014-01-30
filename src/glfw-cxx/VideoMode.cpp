@@ -1,4 +1,4 @@
-#include <glfw-c++/VideoMode.hpp>
+#include <glfw-cxx/VideoMode.hpp>
 
 namespace glfw
 {

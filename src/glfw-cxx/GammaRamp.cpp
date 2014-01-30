@@ -1,4 +1,4 @@
-#include <glfw-c++/GammaRamp.hpp>
+#include <glfw-cxx/GammaRamp.hpp>
 
 namespace glfw
 {

@@ -1,5 +1,5 @@
 cmake_minimum_required( VERSION 2.8 )
-project( glfw-c++ )
+project( glfw-cxx )
 
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
 set( GLFW-CXX_BUILD_SHARED_LIBS TRUE CACHE BOOL "Build shared llibraries." )
@@ -35,7 +35,7 @@ set(TEST_DIR "test")
 
 set(
 	SOURCES
-	${INC_DIR}/${CMAKE_PROJECT_NAME}/glfw-c++.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/glfw-cxx.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Window.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Time.hpp

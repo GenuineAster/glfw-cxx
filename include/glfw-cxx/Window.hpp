@@ -1,9 +1,9 @@
 #pragma once
 #include <GLFW/glfw3.h>
-#include <glfw-c++/Monitor.hpp>
+#include <glfw-cxx/Monitor.hpp>
 #include <string>
 #include <vector>
-#include <glfw-c++/Vector2.hpp>
+#include <glfw-cxx/Vector2.hpp>
 
 namespace glfw
 {
@@ -127,6 +127,7 @@ namespace glfw
 		Window(int width, int height, const std::string &title, const Window &share);
 		Window(int width, int height, const std::string &title);
 		Window(GLFWwindow* window);
+		Window();
 		~Window();
 	};
 }
