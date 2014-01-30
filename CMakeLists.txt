@@ -44,6 +44,7 @@ set(
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Error.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/VideoMode.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Vector2.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/GammaRamp.hpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Time.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Window.cpp
@@ -51,6 +52,7 @@ set(
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Context.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Error.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/VideoMode.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/GammaRamp.cpp
 )
 
 include_directories( ${INC_DIR} )
