@@ -3,10 +3,10 @@
 #include <string>
 #include <glfw-c++/Vector2.hpp>
 #include <glfw-c++/VideoMode.hpp>
+#include <glfw-c++/GammaRamp.hpp>
 
 namespace glfw
 {
-	using gammaramp = GLFWgammaramp;
 	using monitorfun = GLFWmonitorfun;
 
 	using MonitorSize = Vector2<int>;
@@ -27,8 +27,8 @@ namespace glfw
 		const std::list<VideoMode> GetVideoModes() const;
 		const VideoMode GetVideoMode() const;
 		void SetGamma(float gamma);
-		const gammaramp &GetGammaRamp() const;
-		void SetGammaRamp(const gammaramp &ramp);
+		const GammaRamp GetGammaRamp() const;
+		void SetGammaRamp(GammaRamp &ramp);
 
 		GLFWmonitor* GetRawPointerData() const;
 

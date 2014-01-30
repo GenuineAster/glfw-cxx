@@ -61,14 +61,14 @@ namespace glfw
 		glfwSetGamma(m_monitor, gamma);
 	}
 
-	const gammaramp &Monitor::GetGammaRamp() const
+	const GammaRamp Monitor::GetGammaRamp() const
 	{
-		return *glfwGetGammaRamp(m_monitor);
+		return GammaRamp(*glfwGetGammaRamp(m_monitor));
 	}
 
-	void Monitor::SetGammaRamp(const gammaramp &ramp)
+	void Monitor::SetGammaRamp(GammaRamp &ramp)
 	{
-		glfwSetGammaRamp(m_monitor, &ramp);
+		glfwSetGammaRamp(m_monitor, ramp.GetRawPointerData());
 	}
 
 	GLFWmonitor* Monitor::GetRawPointerData() const
