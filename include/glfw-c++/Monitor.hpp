@@ -9,6 +9,9 @@ namespace glfw
 	using gammaramp = GLFWgammaramp;
 	using monitorfun = GLFWmonitorfun;
 
+	using MonitorSize = Vector2<int>;
+	using MonitorPos = Vector2<int>;
+
 	class Monitor
 	{
 	private:

@@ -21,6 +21,11 @@ namespace glfw
 	using keyfun = GLFWkeyfun;
 	using charfun = GLFWcharfun;
 
+	using CursorPos = Vector2<double>;
+	using WindowSize = Vector2<int>;
+	using WindowPos = Vector2<int>;
+	using FramebufferSize = Vector2<int>;
+
 	class Window
 	{
 	private:
