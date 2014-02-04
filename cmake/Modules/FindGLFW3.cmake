@@ -31,7 +31,7 @@ FIND_PATH(GLFW_INCLUDE_DIRS GLFW/glfw3.h
 )
 
 FIND_LIBRARY(GLFW_LIBRARIES
-  NAMES libglfw3.a glfw3 GLFW3.lib
+  NAMES libglfw3.a glfw3 GLFW3.lib glfw
   PATHS
   /usr/lib64
   /usr/lib

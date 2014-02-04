@@ -11,7 +11,7 @@ endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/;${CMAKE_MODULE_PATH}")
 
-find_package( glfw3 REQUIRED )
+find_package( GLFW3 REQUIRED )
 
 if(UNIX)
 	include_directories(${GLFW_INCLUDE_DIRS})
