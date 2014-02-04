@@ -11,4 +11,4 @@ elseif( APPLE )
 	link_libraries( OpenGL )
 endif()
 
-add_executable( examples/tutorial/tutorial examples/tutorial/tutorial.cpp )
+add_executable( examples/simple/simple examples/simple/simple.cpp )
