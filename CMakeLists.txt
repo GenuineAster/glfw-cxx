@@ -4,6 +4,7 @@ project( glfw-cxx )
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
 set( GLFW-CXX_BUILD_SHARED_LIBS TRUE CACHE BOOL "Build shared llibraries." )
 set( GLFW-CXX_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation." )
+set( GLFW-CXX_BUILD_EXAMPLES TRUE CACHE BOOL "Build glfw-cxx examples." )
 
 if(CMAKE_COMPILER_IS_GNUCXX)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -73,4 +74,9 @@ endif()
 
 if( GLFW-CXX_BUILD_DOC )
 	add_subdirectory( doc )
+endif()
+
+
+if( GLFW-CXX_BUILD_EXAMPLES )
+	include(examples/CMakeLists.txt)
 endif()
