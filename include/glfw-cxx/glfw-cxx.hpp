@@ -7,3 +7,4 @@
 #include <glfw-cxx/Vector2.hpp>
 #include <glfw-cxx/VideoMode.hpp>
 #include <glfw-cxx/GammaRamp.hpp>
+#include <glfw-cxx/Input.hpp>

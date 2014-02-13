@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <glfw-cxx/Vector2.hpp>
+#include <glfw-cxx/Input.hpp>
+
 
 namespace glfw
 {
@@ -37,7 +39,7 @@ namespace glfw
 
 		void SetInputMode(int mode, int value);
 
-		int GetKey(int key) const;
+		int GetKey(Key key) const;
 
 		int GetMouseButton(int button) const;
 

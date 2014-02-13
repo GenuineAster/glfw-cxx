@@ -13,7 +13,7 @@ namespace glfw
 		glfwSetInputMode(m_window, mode, value);
 	}
 
-	int Window::GetKey(int key) const
+	int Window::GetKey(Key key) const
 	{
 		return glfwGetKey(m_window, key);
 	}
