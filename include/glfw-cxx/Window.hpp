@@ -48,13 +48,13 @@ namespace glfw
 		void SetCursorPos(CursorPos pos);
 		void SetCursorPos(double x, double y);
 
-		static int JoystickPresent(int joy);
+		static int JoystickPresent(Joystick joy);
 
-		static std::vector<float> GetJoystickAxes(int joy);
+		static std::vector<float> GetJoystickAxes(Joystick joy);
 
-		static const std::vector<uint8_t> GetJoystickButtons(int joy);
+		static const std::vector<uint8_t> GetJoystickButtons(Joystick joy);
 
-		static std::string GetJoystickName(int joy);
+		static std::string GetJoystickName(Joystick joy);
 
 		keyfun SetKeyCallback(keyfun cbfun);
 

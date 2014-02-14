@@ -40,26 +40,26 @@ namespace glfw
 		glfwSetCursorPos(m_window, x, y);
 	}
 
-	int Window::JoystickPresent(int joy)
+	int Window::JoystickPresent(Joystick joy)
 	{
 		return glfwJoystickPresent(joy);
 	}
 
-	std::vector<float> Window::GetJoystickAxes(int joy)
+	std::vector<float> Window::GetJoystickAxes(Joystick joy)
 	{
 		int count;
 		const float* temp = glfwGetJoystickAxes(joy, &count);
 		return std::vector<float>(*temp, count);
 	}
 
-	const std::vector<uint8_t> Window::GetJoystickButtons(int joy)
+	const std::vector<uint8_t> Window::GetJoystickButtons(Joystick joy)
 	{
 		int count;
 		const uint8_t* temp = glfwGetJoystickButtons(joy, &count);
 		return std::vector<uint8_t>(*temp, count);
 	}
 
-	std::string Window::GetJoystickName(int joy)
+	std::string Window::GetJoystickName(Joystick joy)
 	{
 		return std::string(glfwGetJoystickName(joy));
 	}
