@@ -173,4 +173,13 @@ namespace glfw
 		Joystick16,
 		JoystickLast = Joystick16
 	};
+
+	enum KeyAction
+	{
+		Press,
+		Release,
+		Repeat
+	};
+
+	using ButtonAction = KeyAction;
 }
