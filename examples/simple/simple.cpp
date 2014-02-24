@@ -2,11 +2,6 @@
 #include <cstdlib>
 #include <iostream>
 
-void error_callback(int error, const char* description)
-{
-	std::cerr<<description;
-}
-
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (key == glfw::Key::Escape && action == GLFW_PRESS)
@@ -16,7 +11,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 int main(void)
 {
 	glfw::Window window;
-	glfw::SetErrorCallback(error_callback);
 
 	window.Create(640, 480, "Simple example");
 
