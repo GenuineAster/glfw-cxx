@@ -1,9 +1,12 @@
 #pragma once
 #include <GLFW/glfw3.h>
+#include <string>
+#include <functional>
+#include <iostream>
 
 namespace glfw
 {
-	enum Error
+	enum ErrorCode
 	{
 		NotInitialized = 0x00010001,
 		NoCurrentContext,
@@ -16,8 +19,41 @@ namespace glfw
 		FormatUnavailable
 	};
 
-	using errorfun = GLFWerrorfun;
+	class ErrorData
+	{
+	public:
+		ErrorCode error;
+		std::string description;
+		ErrorData(int error_, const char* description_);
+	};
 
-	errorfun SetErrorCallback(errorfun cbfun);
+	namespace Error
+	{
+		using Function = std::function<void(ErrorData)>;
+		using FunctionPointer = void(ErrorData);
+		using FunctionPointerRaw = void(int, const char*);
+
+
+		void LambdaFunctionWrapper(ErrorData error);
+		void FunctionPointerWrapper(int error, const char* description);
+
+
+		const Function DefaultErrorFunction = [](ErrorData error)
+		{
+			std::cerr<<"ERROR "<<error.error<<": "<<error.description<<std::endl;
+		};
+
+		Function CurrentErrorFunction = DefaultErrorFunction;
+		FunctionPointer* CurrentErrorFunctionPointer = *LambdaFunctionWrapper;
+		FunctionPointerRaw* CurrentErrorFunctionPointerRaw = *FunctionPointerWrapper;
+
+
+		Function GetDefaultErrorCallback();
+		Function SetErrorCallback(Function fun);
+		FunctionPointer* SetErrorCallback(FunctionPointer* fun);
+		FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
+
+	}
+
 
 }
