@@ -2,6 +2,21 @@
 
 namespace glfw
 {
+
+	const Monitor::MonitorFunction Monitor::DefaultMonitorFunction = 
+	[](Monitor monitor, MonitorConfigChangeEvents event)
+	{
+		changed = true;
+		ChangedMonitors.push_back(monitor);
+	};
+
+	bool Monitor::changed = false;
+	std::list<Monitor> Monitor::ChangedMonitors = {};
+
+	Monitor::MonitorFunction Monitor::CurrentMonitorFunction = Monitor::DefaultMonitorFunction;
+	Monitor::MonitorFunctionPointer* Monitor::CurrentMonitorFunctionPointer = *Monitor::LambdaFunctionWrapper;
+	Monitor::MonitorFunctionPointerRaw* Monitor::CurrentMonitorFunctionPointerRaw = *Monitor::FunctionPointerWrapper;
+
 	const std::list<Monitor> Monitor::GetMonitors()
 	{
 		int count;
@@ -36,11 +51,6 @@ namespace glfw
 		return std::string{glfwGetMonitorName(m_monitor)};
 	}
 
-	const monitorfun Monitor::SetCallback(monitorfun cbfun)
-	{
-		return glfwSetMonitorCallback(cbfun);
-	}
-
 	const std::list<VideoMode> Monitor::GetVideoModes() const
 	{
 		int count;
@@ -72,6 +82,53 @@ namespace glfw
 	}
 
 	GLFWmonitor* Monitor::GetRawPointerData() const
+	{
+		return m_monitor;
+	}
+
+	void Monitor::LambdaFunctionWrapper(Monitor monitor, MonitorConfigChangeEvents event)
+	{
+		CurrentMonitorFunction(monitor, event);
+	}
+
+	void Monitor::FunctionPointerWrapper(GLFWmonitor* monitor, int event)
+	{
+		CurrentMonitorFunctionPointer(
+			Monitor(monitor), 
+			static_cast<MonitorConfigChangeEvents>(event)
+		);
+	}
+
+	Monitor::MonitorFunction Monitor::GetDefaultCallback()
+	{
+		return DefaultMonitorFunction;
+	}
+
+	Monitor::MonitorFunction Monitor::SetCallback(Monitor::MonitorFunction fun)
+	{
+		auto temp = CurrentMonitorFunction;
+		CurrentMonitorFunction = fun;
+		CurrentMonitorFunctionPointer = *LambdaFunctionWrapper;
+		CurrentMonitorFunctionPointerRaw = *FunctionPointerWrapper;
+		return temp;
+	}
+
+	const Monitor::MonitorFunctionPointer* Monitor::SetCallback(Monitor::MonitorFunctionPointer* fun)
+	{
+		auto temp = CurrentMonitorFunctionPointer;
+		CurrentMonitorFunctionPointer = fun;
+		CurrentMonitorFunctionPointerRaw = FunctionPointerWrapper;
+		return temp;
+	}
+
+	const Monitor::MonitorFunctionPointerRaw* Monitor::SetCallback(Monitor::MonitorFunctionPointerRaw* fun)
+	{
+		auto temp = CurrentMonitorFunctionPointerRaw;
+		CurrentMonitorFunctionPointerRaw = fun;
+		return temp;
+	}
+
+	Monitor::operator GLFWmonitor*()
 	{
 		return m_monitor;
 	}
