@@ -35,10 +35,10 @@ namespace glfw
 		static FunctionPointer* CurrentErrorFunctionPointer;
 		static FunctionPointerRaw* CurrentErrorFunctionPointerRaw;
 
-		Function GetDefaultErrorCallback();
-		Function SetErrorCallback(Function fun);
-		const FunctionPointer* SetErrorCallback(FunctionPointer* fun);
-		const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
+		static Function GetDefaultErrorCallback();
+		static Function SetErrorCallback(Function fun);
+		static const FunctionPointer* SetErrorCallback(FunctionPointer* fun);
+		static const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
 
 	public:
 		ErrorCode error;

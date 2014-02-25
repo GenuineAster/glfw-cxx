@@ -64,36 +64,6 @@ namespace glfw
 		return std::string(glfwGetJoystickName(joy));
 	}
 
-	keyfun Window::SetKeyCallback(keyfun cbfun)
-	{
-		glfwSetKeyCallback(m_window, cbfun);
-	}
-
-	charfun Window::SetCharCallback(charfun cbfun)
-	{
-		glfwSetCharCallback(m_window, cbfun);
-	}
-
-	mousebuttonfun Window::SetMouseButtonCallback(mousebuttonfun cbfun)
-	{
-		glfwSetMouseButtonCallback(m_window, cbfun);
-	}
-
-	cursorposfun Window::SetCursorPosCallback(cursorposfun cbfun)
-	{
-		glfwSetCursorPosCallback(m_window, cbfun);
-	}
-
-	cursorenterfun Window::SetCursorEnterCallback(cursorenterfun cbfun)
-	{
-		glfwSetCursorEnterCallback(m_window, cbfun);
-	}
-
-	scrollfun Window::SetScrollCallback(scrollfun cbfun)
-	{
-		glfwSetScrollCallback(m_window, cbfun);
-	}
-
 	void Window::SwapBuffers()
 	{
 		glfwSwapBuffers(m_window);
@@ -255,41 +225,10 @@ namespace glfw
 		return m_window;
 	}
 
-	windowposfun Window::SetPosCallback(windowposfun cbfun)
+	Window::operator GLFWwindow*()
 	{
-		return glfwSetWindowPosCallback(m_window, cbfun);
+		return m_window;
 	}
-
-	windowsizefun Window::SetSizeCallback(windowsizefun cbfun)
-	{
-		return glfwSetWindowSizeCallback(m_window, cbfun);
-	}
-
-	windowclosefun Window::SetCloseCallback(windowclosefun cbfun)
-	{
-		return glfwSetWindowCloseCallback(m_window, cbfun);
-	}
-
-	windowrefreshfun Window::SetRefreshCallback(windowrefreshfun cbfun)
-	{
-		return glfwSetWindowRefreshCallback(m_window, cbfun);
-	}
-
-	windowfocusfun Window::SetFocusCallback(windowfocusfun cbfun)
-	{
-		return glfwSetWindowFocusCallback(m_window, cbfun);
-	}
-
-	windowiconifyfun Window::SetIconifyCallback(windowiconifyfun cbfun)
-	{
-		return glfwSetWindowIconifyCallback(m_window, cbfun);
-	}
-
-	framebuffersizefun Window::SetFramebufferSizeCallback(framebuffersizefun cbfun)
-	{
-		return glfwSetFramebufferSizeCallback(m_window, cbfun);
-	}
-
 
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{
@@ -316,7 +255,12 @@ namespace glfw
 		m_window = window;
 	}
 
-	Window::Window() {}
+	Window::Window()
+	{
+		//using Window::LambdaPositionFunctionWrapper;
+		//using Window::PositionFunctionPointerWrapper;
+		
+	}
 
 	Window::~Window()
 	{

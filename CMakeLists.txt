@@ -56,6 +56,8 @@ set(
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/VideoMode.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/GammaRamp.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Init.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/WindowCallbacks.cpp
+	${SRC_DIR}/${CMAKE_PROJECT_NAME}/EventCallbacks.cpp
 )
 
 include_directories( ${INC_DIR} )

@@ -4,7 +4,7 @@
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	if (key == glfw::Key::Escape && action == GLFW_PRESS)
+	if (key == glfw::Key::Escape && action == glfw::KeyAction::Press)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
