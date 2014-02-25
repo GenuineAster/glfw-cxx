@@ -19,41 +19,30 @@ namespace glfw
 		FormatUnavailable
 	};
 
-	class ErrorData
+	class Error
 	{
 	public:
-		ErrorCode error;
-		std::string description;
-		ErrorData(int error_, const char* description_);
-	};
-
-	namespace Error
-	{
-		using Function = std::function<void(ErrorData)>;
-		using FunctionPointer = void(ErrorData);
+		using Function = std::function<void(Error)>;
+		using FunctionPointer = void(Error);
 		using FunctionPointerRaw = void(int, const char*);
 
+		static void LambdaFunctionWrapper(Error error);
+		static void FunctionPointerWrapper(int error, const char* description);
 
-		void LambdaFunctionWrapper(ErrorData error);
-		void FunctionPointerWrapper(int error, const char* description);
+		static const Function DefaultErrorFunction;
 
-
-		const Function DefaultErrorFunction = [](ErrorData error)
-		{
-			std::cerr<<"ERROR "<<error.error<<": "<<error.description<<std::endl;
-		};
-
-		Function CurrentErrorFunction = DefaultErrorFunction;
-		FunctionPointer* CurrentErrorFunctionPointer = *LambdaFunctionWrapper;
-		FunctionPointerRaw* CurrentErrorFunctionPointerRaw = *FunctionPointerWrapper;
-
+		static Function CurrentErrorFunction;
+		static FunctionPointer* CurrentErrorFunctionPointer;
+		static FunctionPointerRaw* CurrentErrorFunctionPointerRaw;
 
 		Function GetDefaultErrorCallback();
 		Function SetErrorCallback(Function fun);
 		const FunctionPointer* SetErrorCallback(FunctionPointer* fun);
 		const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
 
-	}
-
-
+	public:
+		ErrorCode error;
+		std::string description;
+		Error(int error_, const char* description_);
+	};
 }

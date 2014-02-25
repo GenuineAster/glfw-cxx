@@ -4,53 +4,58 @@
 
 namespace glfw
 {
-
-	//FunctionPointerRaw 
-	namespace Error
+	const Error::Function Error::DefaultErrorFunction = [](Error error)
 	{
-		void LambdaFunctionWrapper(ErrorData error)
-		{
-			CurrentErrorFunction(error);
-		}
+		std::cerr<<"ERROR "<<error.error<<": "<<error.description<<std::endl;
+	};
 
-		void FunctionPointerWrapper(int error, const char* description)
-		{
-			CurrentErrorFunctionPointer({error, description});
-		}
+	Error::Function Error::CurrentErrorFunction = Error::DefaultErrorFunction;
+	Error::FunctionPointer *Error::CurrentErrorFunctionPointer = *Error::LambdaFunctionWrapper;
+	Error::FunctionPointerRaw *Error::CurrentErrorFunctionPointerRaw = *Error::FunctionPointerWrapper;
 
-		Function GetDefaultErrorCallback()
-		{
-			return DefaultErrorFunction;
-		}
 
-		Function SetErrorCallback(Function fun)
-		{
-			Function temp = CurrentErrorFunction;
-			CurrentErrorFunction = fun;
-			CurrentErrorFunctionPointer = LambdaFunctionWrapper;
-			CurrentErrorFunctionPointerRaw = FunctionPointerWrapper;
-			glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
-			return temp;
-		}
-
-		const FunctionPointer* SetErrorCallback(FunctionPointer fun)
-		{
-			FunctionPointer* temp = CurrentErrorFunctionPointer;
-			CurrentErrorFunctionPointer = fun;
-			CurrentErrorFunctionPointerRaw = FunctionPointerWrapper;
-			glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
-			return temp;
-		}
-
-		const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw fun)
-		{
-			FunctionPointerRaw* temp = CurrentErrorFunctionPointerRaw;
-			CurrentErrorFunctionPointerRaw = fun;
-			glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
-			return temp;
-		}
+	void Error::LambdaFunctionWrapper(Error error)
+	{
+		CurrentErrorFunction(error);
 	}
 
-	ErrorData::ErrorData(int error_, const char* description_): 
+	void Error::FunctionPointerWrapper(int error, const char* description)
+	{
+		CurrentErrorFunctionPointer({error, description});
+	}
+
+	Error::Function Error::GetDefaultErrorCallback()
+	{
+		return DefaultErrorFunction;
+	}
+
+	Error::Function Error::SetErrorCallback(Error::Function fun)
+	{
+		Function temp = CurrentErrorFunction;
+		CurrentErrorFunction = fun;
+		CurrentErrorFunctionPointer = LambdaFunctionWrapper;
+		CurrentErrorFunctionPointerRaw = FunctionPointerWrapper;
+		glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
+		return temp;
+	}
+
+	const Error::FunctionPointer* Error::SetErrorCallback(Error::FunctionPointer fun)
+	{
+		FunctionPointer* temp = CurrentErrorFunctionPointer;
+		CurrentErrorFunctionPointer = fun;
+		CurrentErrorFunctionPointerRaw = FunctionPointerWrapper;
+		glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
+		return temp;
+	}
+
+	const Error::FunctionPointerRaw* Error::SetErrorCallback(Error::FunctionPointerRaw fun)
+	{
+		FunctionPointerRaw* temp = CurrentErrorFunctionPointerRaw;
+		CurrentErrorFunctionPointerRaw = fun;
+		glfwSetErrorCallback(CurrentErrorFunctionPointerRaw);
+		return temp;
+	}
+
+	Error::Error(int error_, const char* description_): 
 		error{static_cast<ErrorCode>(error_)}, description{description_} {}
 }
