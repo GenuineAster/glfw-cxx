@@ -13,6 +13,12 @@ namespace glfw
 	using MonitorSize = Vector2<int>;
 	using MonitorPos = Vector2<int>;
 
+	enum MonitorConfigChangeEvents
+	{
+		Connected = GLFW_CONNECTED,
+		Disconnected = GLFW_DISCONNECTED
+	};
+
 	class Monitor
 	{
 	private:
@@ -34,5 +40,6 @@ namespace glfw
 		GLFWmonitor* GetRawPointerData() const;
 
 		Monitor(GLFWmonitor* monitor);
+
 	};
 }
