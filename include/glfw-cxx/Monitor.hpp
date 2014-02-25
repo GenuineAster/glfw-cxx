@@ -21,10 +21,10 @@ namespace glfw
 	class Monitor
 	{
 	public:
-		using MonitorFunction = std::function<void(Monitor, MonitorConfigChangeEvents)>;
-		using MonitorFunctionPointer = void(Monitor, MonitorConfigChangeEvents);
-		using MonitorFunctionPointerRaw = void(GLFWmonitor*, int);
-		static const MonitorFunction DefaultMonitorFunction;
+		using Function = std::function<void(Monitor, MonitorConfigChangeEvents)>;
+		using FunctionPointer = void(Monitor, MonitorConfigChangeEvents);
+		using FunctionPointerRaw = void(GLFWmonitor*, int);
+		static const Function DefaultFunction;
 		static void LambdaFunctionWrapper(Monitor monitor, MonitorConfigChangeEvents event);
 		static void FunctionPointerWrapper(GLFWmonitor* monitor, int event);
 
@@ -33,9 +33,9 @@ namespace glfw
 		GLFWmonitor* m_monitor;
 		static bool changed;
 
-		static MonitorFunction CurrentMonitorFunction;
-		static MonitorFunctionPointer* CurrentMonitorFunctionPointer;
-		static MonitorFunctionPointerRaw* CurrentMonitorFunctionPointerRaw;
+		static Function CurrentFunction;
+		static FunctionPointer* CurrentFunctionPointer;
+		static FunctionPointerRaw* CurrentFunctionPointerRaw;
 
 
 
@@ -51,10 +51,10 @@ namespace glfw
 		const GammaRamp GetGammaRamp() const;
 		void SetGammaRamp(GammaRamp &ramp);
 
-		MonitorFunction GetDefaultCallback();
-		MonitorFunction SetCallback(MonitorFunction fun);
-		const MonitorFunctionPointer* SetCallback(MonitorFunctionPointer* fun);
-		const MonitorFunctionPointerRaw* SetCallback(MonitorFunctionPointerRaw* fun);
+		Function GetDefaultCallback();
+		Function SetCallback(Function fun);
+		const FunctionPointer* SetCallback(FunctionPointer* fun);
+		const FunctionPointerRaw* SetCallback(FunctionPointerRaw* fun);
 
 		static bool GetConfigChange();
 		static std::list<Monitor> GetChangedMonitors();
