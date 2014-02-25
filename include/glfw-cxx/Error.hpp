@@ -50,8 +50,8 @@ namespace glfw
 
 		Function GetDefaultErrorCallback();
 		Function SetErrorCallback(Function fun);
-		FunctionPointer* SetErrorCallback(FunctionPointer* fun);
-		FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
+		const FunctionPointer* SetErrorCallback(FunctionPointer* fun);
+		const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw* fun);
 
 	}
 

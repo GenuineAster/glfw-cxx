@@ -33,7 +33,7 @@ namespace glfw
 			return temp;
 		}
 
-		FunctionPointer* SetErrorCallback(FunctionPointer fun)
+		const FunctionPointer* SetErrorCallback(FunctionPointer fun)
 		{
 			FunctionPointer* temp = CurrentErrorFunctionPointer;
 			CurrentErrorFunctionPointer = fun;
@@ -42,7 +42,7 @@ namespace glfw
 			return temp;
 		}
 
-		FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw fun)
+		const FunctionPointerRaw* SetErrorCallback(FunctionPointerRaw fun)
 		{
 			FunctionPointerRaw* temp = CurrentErrorFunctionPointerRaw;
 			CurrentErrorFunctionPointerRaw = fun;
