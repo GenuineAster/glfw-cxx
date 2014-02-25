@@ -128,6 +128,23 @@ namespace glfw
 		return temp;
 	}
 
+	bool Monitor::GetConfigChange()
+	{
+		if(changed)
+		{
+			changed = false;
+			return true;
+		}
+		return false;
+	}
+
+	std::list<Monitor> Monitor::GetChangedMonitors()
+	{
+		auto temp = ChangedMonitors;
+		ChangedMonitors.clear();
+		return temp;
+	}
+
 	Monitor::operator GLFWmonitor*()
 	{
 		return m_monitor;

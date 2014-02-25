@@ -56,6 +56,9 @@ namespace glfw
 		const MonitorFunctionPointer* SetCallback(MonitorFunctionPointer* fun);
 		const MonitorFunctionPointerRaw* SetCallback(MonitorFunctionPointerRaw* fun);
 
+		static bool GetConfigChange();
+		static std::list<Monitor> GetChangedMonitors();
+
 		GLFWmonitor* GetRawPointerData() const;
 
 		operator GLFWmonitor*();
