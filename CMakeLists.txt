@@ -47,6 +47,7 @@ set(
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Vector2.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/GammaRamp.hpp
 	${INC_DIR}/${CMAKE_PROJECT_NAME}/Init.hpp
+	${INC_DIR}/${CMAKE_PROJECT_NAME}/Event.hpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Monitor.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Time.cpp
 	${SRC_DIR}/${CMAKE_PROJECT_NAME}/Window.cpp

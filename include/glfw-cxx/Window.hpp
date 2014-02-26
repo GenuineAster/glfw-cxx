@@ -3,18 +3,12 @@
 #include <glfw-cxx/Monitor.hpp>
 #include <string>
 #include <vector>
-#include <glfw-cxx/Vector2.hpp>
-#include <glfw-cxx/Input.hpp>
 #include <functional>
+#include <glfw-cxx/Event.hpp>
 
 
 namespace glfw
 {
-	using CursorPos = Vector2<double>;
-	using ScrollOffset = Vector2<double>;
-	using WindowSize = Vector2<int>;
-	using WindowPos = Vector2<int>;
-	using FramebufferSize = Vector2<int>;
 
 	class Window
 	{
@@ -229,6 +223,7 @@ namespace glfw
 
 	private:
 		GLFWwindow* m_window;
+		bool destroy;
 	public:
 
 		int GetInputMode(int mode) const;

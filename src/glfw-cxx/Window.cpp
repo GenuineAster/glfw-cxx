@@ -233,30 +233,36 @@ namespace glfw
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), share.GetRawPointerData());
+		destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), NULL);
+		destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, share.GetRawPointerData());
+		destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+		destroy = true;
 	}
 
 	Window::Window(GLFWwindow* window)
 	{
 		m_window = window;
+		destroy = false;
 	}
 
 	Window::Window()
 	{
+		destroy = true;
 		//using Window::LambdaPositionFunctionWrapper;
 		//using Window::PositionFunctionPointerWrapper;
 		
@@ -264,6 +270,7 @@ namespace glfw
 
 	Window::~Window()
 	{
-		glfwDestroyWindow(m_window);
+		if(destroy)
+			glfwDestroyWindow(m_window);
 	}
 }
