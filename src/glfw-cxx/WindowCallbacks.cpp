@@ -1,4 +1,5 @@
 #include <glfw-cxx/Window.hpp>
+#include <iostream>
 
 namespace glfw
 {
@@ -19,7 +20,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::WindowPosition;
 			event.window_position.position = pos;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::PositionFunction Window::GetDefaultPositionCallback()
@@ -51,21 +52,24 @@ namespace glfw
 	//Window Size
 		void Window::LambdaSizeFunctionWrapper(Window window, WindowSize size)
 		{
+			std::cout<<"Vagina\n";
 			window.CurrentSizeFunction(window, size);
 		}
 
 		void Window::SizeFunctionPointerWrapper(GLFWwindow* window, int SizeX, int SizeY)
 		{
+			std::cout<<"Clitoris\n";
 			Window{window}.CurrentSizeFunctionPointer({window}, {SizeX, SizeY});
 		}
 
 		const Window::SizeFunction Window::DefaultSizeFunction = 
 		[](Window window, WindowSize size)
 		{
+			std::cout<<"Penis\n";
 			Event event;
 			event.type = Event::Type::WindowSize;
 			event.window_size.size = size;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::SizeFunction Window::GetDefaultSizeCallback()
@@ -110,7 +114,7 @@ namespace glfw
 		{
 			Event event;
 			event.type = Event::Type::WindowClose;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::CloseFunction Window::GetDefaultCloseCallback()
@@ -155,7 +159,7 @@ namespace glfw
 		{
 			Event event;
 			event.type = Event::Type::WindowRefresh;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::RefreshFunction Window::GetDefaultRefreshCallback()
@@ -201,7 +205,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::WindowFocus;
 			event.window_focus.focused = focus;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::FocusFunction Window::GetDefaultFocusCallback()
@@ -247,7 +251,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::WindowIconify;
 			event.window_iconify.iconified = iconify;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::IconifyFunction Window::GetDefaultIconifyCallback()
@@ -293,7 +297,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::FramebufferSize;
 			event.fb_size.size = framebuffersize;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::FramebufferSizeFunction Window::GetDefaultFramebufferSizeCallback()

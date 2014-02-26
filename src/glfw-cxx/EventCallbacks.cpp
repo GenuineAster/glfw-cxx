@@ -27,7 +27,7 @@ namespace glfw
 			event.mouse_button.button = button;
 			event.mouse_button.action = action;
 			event.mouse_button.modifier = modifier;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::MouseButtonFunction Window::GetDefaultMouseButtonCallback()
@@ -73,7 +73,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::CursorPosition;
 			event.cursor_position.position = pos;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::CursorPositionFunction Window::GetDefaultCursorPositionCallback()
@@ -119,7 +119,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::CursorPosition;
 			event.cursor_enter.entered = CursorEnter;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::CursorEnterFunction Window::GetDefaultCursorEnterCallback()
@@ -166,7 +166,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::Scroll;
 			event.scroll.offset = pos;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::ScrollFunction Window::GetDefaultScrollCallback()
@@ -215,13 +215,14 @@ namespace glfw
 		const Window::KeyFunction Window::DefaultKeyFunction = 
 		[](Window window, Key key, int scancode, KeyAction action, Modifier modifier)
 		{
+			std::cout<<"Help?!?!\n";
 			Event event;
 			event.type = Event::Type::Key;
 			event.key.key = key;
 			event.key.scancode = scancode;
 			event.key.action = action;
 			event.key.modifier = modifier;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::KeyFunction Window::GetDefaultKeyCallback()
@@ -267,7 +268,7 @@ namespace glfw
 			Event event;
 			event.type = Event::Type::Char;
 			event.text.codepoint = codepoint;
-			window.EventQueue.push(event);
+			window.AddToEventQueue(event);
 		};
 
 		Window::CharFunction Window::GetDefaultCharCallback()

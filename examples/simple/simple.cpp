@@ -15,10 +15,25 @@ int main(void)
 	window.Create(640, 480, "Simple example");
 
 	window.MakeContextCurrent();
-	window.SetKeyCallback(key_callback);
+	//window.SetKeyCallback(key_callback);
 
 	while(!window.ShouldClose())
 	{
+		window.PollEvents();
+		glfw::Event event;
+		while(window.GetEvents(event))
+		{
+			std::cout<<"Got event from queue!\n";
+			std::cout<<"\tEvent type is: "<<static_cast<int>(event.type)<<"\n";
+			switch(event.type)
+			{
+				case glfw::Event::Type::Key:
+					if(event.key.action == glfw::KeyAction::Press)
+						if(event.key.key == glfw::Key::Escape)
+							window.SetShouldClose(GL_TRUE);
+			}
+		}
+
 		glfw::FramebufferSize fb_size = window.GetFramebufferSize();
 		
 		float ratio = fb_size.x / static_cast<float>(fb_size.y);

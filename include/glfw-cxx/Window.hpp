@@ -223,10 +223,12 @@ namespace glfw
 		void SetCharCallback(CharFunctionPointerRaw* fun);
 
 
-
 	private:
 		GLFWwindow* m_window;
 		bool m_destroy;
+
+		void AddToEventQueue(Event &event);
+		void PrepareCallbacks();
 
 	public:
 

@@ -1,5 +1,6 @@
 #include <glfw-cxx/Window.hpp>
 #include <glfw-cxx/Context.hpp>
+#include <iostream>
 
 namespace glfw
 {
@@ -97,21 +98,25 @@ namespace glfw
 	void Window::Create(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), share.GetRawPointerData());
+		PrepareCallbacks();
 	}
 
 	void Window::Create(int width, int height, const std::string &title, const Monitor &monitor)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), NULL);
+		PrepareCallbacks();
 	}
 
 	void Window::Create(int width, int height, const std::string &title, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, share.GetRawPointerData());
+		PrepareCallbacks();
 	}
 
 	void Window::Create(int width, int height, const std::string &title)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+		PrepareCallbacks();
 	}
 
 	int Window::ShouldClose() const
@@ -222,13 +227,35 @@ namespace glfw
 
 	bool Window::GetEvents(Event &event)
 	{
-		if(EventQueue.size() > 0)
+		if(glfwGetWindowUserPointer(m_window) == NULL)
+			return false;
+
+		std::cout<<"Getting event from queue...\n";
+		std::queue<Event>* event_queue = 
+			static_cast<std::queue<Event>*>(glfwGetWindowUserPointer(m_window));
+
+		if(!event_queue->empty())
 		{
-			event = EventQueue.front();
-			EventQueue.pop();
+			event = event_queue->front();
+			event_queue->pop();
 			return true;
 		}
 		return false;
+	}
+
+	void Window::AddToEventQueue(Event &event)
+	{
+		std::cout<<"Adding event to queue...\n";
+		std::queue<Event>* event_queue;
+		if(glfwGetWindowUserPointer(m_window) != NULL)
+			event_queue = static_cast<std::queue<Event>*>(glfwGetWindowUserPointer(m_window));
+		else
+			event_queue = new std::queue<Event>;
+
+		glfwSetWindowUserPointer(m_window, event_queue);
+
+		event_queue->push(event);
+		std::cout<<"Queue size is now: "<<event_queue->size()<<".\n";
 	}
 
 	GLFWwindow* Window::GetRawPointerData() const
@@ -239,6 +266,24 @@ namespace glfw
 	Window::operator GLFWwindow*()
 	{
 		return m_window;
+	}
+
+	void Window::PrepareCallbacks()
+	{
+		glfwSetWindowPosCallback(m_window, CurrentPositionFunctionPointerRaw);
+		glfwSetWindowSizeCallback(m_window, CurrentSizeFunctionPointerRaw);
+		glfwSetWindowCloseCallback(m_window, CurrentCloseFunctionPointerRaw);
+		glfwSetWindowRefreshCallback(m_window, CurrentRefreshFunctionPointerRaw);
+		glfwSetWindowFocusCallback(m_window, CurrentFocusFunctionPointerRaw);
+		glfwSetWindowIconifyCallback(m_window, CurrentIconifyFunctionPointerRaw);
+		glfwSetFramebufferSizeCallback(m_window, CurrentFramebufferSizeFunctionPointerRaw);
+
+		glfwSetMouseButtonCallback(m_window, CurrentMouseButtonFunctionPointerRaw);
+		glfwSetCursorPosCallback(m_window, CurrentCursorPositionFunctionPointerRaw);
+		glfwSetCursorEnterCallback(m_window, CurrentCursorEnterFunctionPointerRaw);
+		glfwSetScrollCallback(m_window, CurrentScrollFunctionPointerRaw);
+		glfwSetKeyCallback(m_window, CurrentKeyFunctionPointerRaw);
+		glfwSetCharCallback(m_window, CurrentCharFunctionPointerRaw);
 	}
 
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
@@ -269,6 +314,7 @@ namespace glfw
 	{
 		m_window = window;
 		m_destroy = false;
+		PrepareCallbacks();
 	}
 
 	Window::Window()
@@ -276,7 +322,6 @@ namespace glfw
 		m_destroy = true;
 		//using Window::LambdaPositionFunctionWrapper;
 		//using Window::PositionFunctionPointerWrapper;
-		
 	}
 
 	Window::~Window()
