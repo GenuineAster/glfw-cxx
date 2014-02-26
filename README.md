@@ -18,7 +18,7 @@ $ git clone http://github.com/Mischa-Alff/glfw-cxx.git glfw-cxx
 $ cd glfw-cxx
 $ cmake .
 $ make -j4
-# make install
+$ sudo make install
 ```
 
 
