@@ -106,5 +106,7 @@ namespace glfw
 			KeyEvent key;
 			CharEvent text;
 		};
+
+		Event() {}
 	};
 } 

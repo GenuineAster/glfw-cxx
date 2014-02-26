@@ -5,6 +5,7 @@
 #include <vector>
 #include <functional>
 #include <glfw-cxx/Event.hpp>
+#include <queue>
 
 
 namespace glfw
@@ -13,6 +14,8 @@ namespace glfw
 	class Window
 	{
 	public:
+		std::queue<Event> EventQueue;
+
 		using PositionFunction = std::function<void(Window,WindowPos)>;
 		using PositionFunctionPointer = void(Window,WindowPos);
 		using PositionFunctionPointerRaw = void(GLFWwindow*, int, int);
@@ -223,7 +226,8 @@ namespace glfw
 
 	private:
 		GLFWwindow* m_window;
-		bool destroy;
+		bool m_destroy;
+
 	public:
 
 		int GetInputMode(int mode) const;
@@ -292,6 +296,8 @@ namespace glfw
 
 		static void PollEvents();
 		static void WaitEvents();
+
+		bool GetEvents(Event &event);
 
 		GLFWwindow* GetRawPointerData() const;
 

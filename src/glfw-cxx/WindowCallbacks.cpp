@@ -16,7 +16,10 @@ namespace glfw
 		const Window::PositionFunction Window::DefaultPositionFunction = 
 		[](Window window, WindowPos pos)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowPosition;
+			event.window_position.position = pos;
+			window.EventQueue.push(event);
 		};
 
 		Window::PositionFunction Window::GetDefaultPositionCallback()
@@ -59,7 +62,10 @@ namespace glfw
 		const Window::SizeFunction Window::DefaultSizeFunction = 
 		[](Window window, WindowSize size)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowSize;
+			event.window_size.size = size;
+			window.EventQueue.push(event);
 		};
 
 		Window::SizeFunction Window::GetDefaultSizeCallback()
@@ -102,7 +108,9 @@ namespace glfw
 		const Window::CloseFunction Window::DefaultCloseFunction = 
 		[](Window window)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowClose;
+			window.EventQueue.push(event);
 		};
 
 		Window::CloseFunction Window::GetDefaultCloseCallback()
@@ -145,7 +153,9 @@ namespace glfw
 		const Window::RefreshFunction Window::DefaultRefreshFunction = 
 		[](Window window)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowRefresh;
+			window.EventQueue.push(event);
 		};
 
 		Window::RefreshFunction Window::GetDefaultRefreshCallback()
@@ -188,7 +198,10 @@ namespace glfw
 		const Window::FocusFunction Window::DefaultFocusFunction = 
 		[](Window window, int focus)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowFocus;
+			event.window_focus.focused = focus;
+			window.EventQueue.push(event);
 		};
 
 		Window::FocusFunction Window::GetDefaultFocusCallback()
@@ -231,7 +244,10 @@ namespace glfw
 		const Window::IconifyFunction Window::DefaultIconifyFunction = 
 		[](Window window, int iconify)
 		{
-			;
+			Event event;
+			event.type = Event::Type::WindowIconify;
+			event.window_iconify.iconified = iconify;
+			window.EventQueue.push(event);
 		};
 
 		Window::IconifyFunction Window::GetDefaultIconifyCallback()
@@ -272,9 +288,12 @@ namespace glfw
 		}
 
 		const Window::FramebufferSizeFunction Window::DefaultFramebufferSizeFunction = 
-		[](Window window, FramebufferSize Framebuffersize)
+		[](Window window, FramebufferSize framebuffersize)
 		{
-			;
+			Event event;
+			event.type = Event::Type::FramebufferSize;
+			event.fb_size.size = framebuffersize;
+			window.EventQueue.push(event);
 		};
 
 		Window::FramebufferSizeFunction Window::GetDefaultFramebufferSizeCallback()

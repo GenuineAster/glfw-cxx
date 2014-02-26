@@ -220,6 +220,17 @@ namespace glfw
 		glfwWaitEvents();
 	}
 
+	bool Window::GetEvents(Event &event)
+	{
+		if(EventQueue.size() > 0)
+		{
+			event = EventQueue.front();
+			EventQueue.pop();
+			return true;
+		}
+		return false;
+	}
+
 	GLFWwindow* Window::GetRawPointerData() const
 	{
 		return m_window;
@@ -233,36 +244,36 @@ namespace glfw
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), share.GetRawPointerData());
-		destroy = true;
+		m_destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title, const Monitor &monitor)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), monitor.GetRawPointerData(), NULL);
-		destroy = true;
+		m_destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title, const Window &share)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, share.GetRawPointerData());
-		destroy = true;
+		m_destroy = true;
 	}
 
 	Window::Window(int width, int height, const std::string &title)
 	{
 		m_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
-		destroy = true;
+		m_destroy = true;
 	}
 
 	Window::Window(GLFWwindow* window)
 	{
 		m_window = window;
-		destroy = false;
+		m_destroy = false;
 	}
 
 	Window::Window()
 	{
-		destroy = true;
+		m_destroy = true;
 		//using Window::LambdaPositionFunctionWrapper;
 		//using Window::PositionFunctionPointerWrapper;
 		
@@ -270,7 +281,7 @@ namespace glfw
 
 	Window::~Window()
 	{
-		if(destroy)
+		if(m_destroy)
 			glfwDestroyWindow(m_window);
 	}
 }
