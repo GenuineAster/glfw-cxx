@@ -109,4 +109,4 @@ namespace glfw
 
 		Event() {}
 	};
-} 
+}
