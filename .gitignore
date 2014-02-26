@@ -23,3 +23,6 @@ Makefile
 
 glfw-cxx.sublime-*
 *.exe
+
+run_simple.sh
+debug_simple.sh
