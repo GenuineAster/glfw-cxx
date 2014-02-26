@@ -29,17 +29,20 @@ namespace glfw
 			CurrentPositionFunction = fun;
 			CurrentPositionFunctionPointer = *LambdaPositionFunctionWrapper;
 			CurrentPositionFunctionPointerRaw = *PositionFunctionPointerWrapper;
+			glfwSetWindowPosCallback(m_window, CurrentPositionFunctionPointerRaw);
 		}
 
 		void Window::SetPositionCallback(PositionFunctionPointer fun)
 		{
 			CurrentPositionFunctionPointer = fun;
 			CurrentPositionFunctionPointerRaw = *PositionFunctionPointerWrapper;
+			glfwSetWindowPosCallback(m_window, CurrentPositionFunctionPointerRaw);
 		}
 
 		void Window::SetPositionCallback(PositionFunctionPointerRaw fun)
 		{
 			CurrentPositionFunctionPointerRaw = fun;
+			glfwSetWindowPosCallback(m_window, CurrentPositionFunctionPointerRaw);
 		}
 
 	//Window Size
@@ -69,17 +72,20 @@ namespace glfw
 			CurrentSizeFunction = fun;
 			CurrentSizeFunctionPointer = *LambdaSizeFunctionWrapper;
 			CurrentSizeFunctionPointerRaw = *SizeFunctionPointerWrapper;
+			glfwSetWindowSizeCallback(m_window, CurrentSizeFunctionPointerRaw);
 		}
 
 		void Window::SetSizeCallback(SizeFunctionPointer fun)
 		{
 			CurrentSizeFunctionPointer = fun;
 			CurrentSizeFunctionPointerRaw = *SizeFunctionPointerWrapper;
+			glfwSetWindowSizeCallback(m_window, CurrentSizeFunctionPointerRaw);
 		}
 
 		void Window::SetSizeCallback(SizeFunctionPointerRaw fun)
 		{
 			CurrentSizeFunctionPointerRaw = fun;
+			glfwSetWindowSizeCallback(m_window, CurrentSizeFunctionPointerRaw);
 		}
 
 	//Window Close
@@ -109,17 +115,20 @@ namespace glfw
 			CurrentCloseFunction = fun;
 			CurrentCloseFunctionPointer = *LambdaCloseFunctionWrapper;
 			CurrentCloseFunctionPointerRaw = *CloseFunctionPointerWrapper;
+			glfwSetWindowCloseCallback(m_window, CurrentCloseFunctionPointerRaw);
 		}
 
 		void Window::SetCloseCallback(CloseFunctionPointer fun)
 		{
 			CurrentCloseFunctionPointer = fun;
 			CurrentCloseFunctionPointerRaw = *CloseFunctionPointerWrapper;
+			glfwSetWindowCloseCallback(m_window, CurrentCloseFunctionPointerRaw);
 		}
 
 		void Window::SetCloseCallback(CloseFunctionPointerRaw fun)
 		{
 			CurrentCloseFunctionPointerRaw = fun;
+			glfwSetWindowCloseCallback(m_window, CurrentCloseFunctionPointerRaw);
 		}
 
 	//Window Refresh
@@ -149,17 +158,20 @@ namespace glfw
 			CurrentRefreshFunction = fun;
 			CurrentRefreshFunctionPointer = *LambdaRefreshFunctionWrapper;
 			CurrentRefreshFunctionPointerRaw = *RefreshFunctionPointerWrapper;
+			glfwSetWindowRefreshCallback(m_window, CurrentRefreshFunctionPointerRaw);
 		}
 
 		void Window::SetRefreshCallback(RefreshFunctionPointer fun)
 		{
 			CurrentRefreshFunctionPointer = fun;
 			CurrentRefreshFunctionPointerRaw = *RefreshFunctionPointerWrapper;
+			glfwSetWindowRefreshCallback(m_window, CurrentRefreshFunctionPointerRaw);
 		}
 
 		void Window::SetRefreshCallback(RefreshFunctionPointerRaw fun)
 		{
 			CurrentRefreshFunctionPointerRaw = fun;
+			glfwSetWindowRefreshCallback(m_window, CurrentRefreshFunctionPointerRaw);
 		}
 
 	//Window Focus
@@ -189,17 +201,20 @@ namespace glfw
 			CurrentFocusFunction = fun;
 			CurrentFocusFunctionPointer = *LambdaFocusFunctionWrapper;
 			CurrentFocusFunctionPointerRaw = *FocusFunctionPointerWrapper;
+			glfwSetWindowFocusCallback(m_window, CurrentFocusFunctionPointerRaw);
 		}
 
 		void Window::SetFocusCallback(FocusFunctionPointer fun)
 		{
 			CurrentFocusFunctionPointer = fun;
 			CurrentFocusFunctionPointerRaw = *FocusFunctionPointerWrapper;
+			glfwSetWindowFocusCallback(m_window, CurrentFocusFunctionPointerRaw);
 		}
 
 		void Window::SetFocusCallback(FocusFunctionPointerRaw fun)
 		{
 			CurrentFocusFunctionPointerRaw = fun;
+			glfwSetWindowFocusCallback(m_window, CurrentFocusFunctionPointerRaw);
 		}
 
 	//Window Iconify
@@ -229,17 +244,20 @@ namespace glfw
 			CurrentIconifyFunction = fun;
 			CurrentIconifyFunctionPointer = *LambdaIconifyFunctionWrapper;
 			CurrentIconifyFunctionPointerRaw = *IconifyFunctionPointerWrapper;
+			glfwSetWindowIconifyCallback(m_window, CurrentIconifyFunctionPointerRaw);
 		}
 
 		void Window::SetIconifyCallback(IconifyFunctionPointer fun)
 		{
 			CurrentIconifyFunctionPointer = fun;
 			CurrentIconifyFunctionPointerRaw = *IconifyFunctionPointerWrapper;
+			glfwSetWindowIconifyCallback(m_window, CurrentIconifyFunctionPointerRaw);
 		}
 
 		void Window::SetIconifyCallback(IconifyFunctionPointerRaw fun)
 		{
 			CurrentIconifyFunctionPointerRaw = fun;
+			glfwSetWindowIconifyCallback(m_window, CurrentIconifyFunctionPointerRaw);
 		}
 
 	//Framebuffer Size
@@ -269,16 +287,19 @@ namespace glfw
 			CurrentFramebufferSizeFunction = fun;
 			CurrentFramebufferSizeFunctionPointer = *LambdaFramebufferSizeFunctionWrapper;
 			CurrentFramebufferSizeFunctionPointerRaw = *FramebufferSizeFunctionPointerWrapper;
+			glfwSetFramebufferSizeCallback(m_window, CurrentFramebufferSizeFunctionPointerRaw);
 		}
 
 		void Window::SetFramebufferSizeCallback(FramebufferSizeFunctionPointer fun)
 		{
 			CurrentFramebufferSizeFunctionPointer = fun;
 			CurrentFramebufferSizeFunctionPointerRaw = *FramebufferSizeFunctionPointerWrapper;
+			glfwSetFramebufferSizeCallback(m_window, CurrentFramebufferSizeFunctionPointerRaw);
 		}
 
 		void Window::SetFramebufferSizeCallback(FramebufferSizeFunctionPointerRaw fun)
 		{
 			CurrentFramebufferSizeFunctionPointerRaw = fun;
+			glfwSetFramebufferSizeCallback(m_window, CurrentFramebufferSizeFunctionPointerRaw);
 		}
 }

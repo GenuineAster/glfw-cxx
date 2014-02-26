@@ -1,4 +1,5 @@
 #include <glfw-cxx/Window.hpp>
+#include <iostream>
 
 namespace glfw
 {
@@ -34,17 +35,20 @@ namespace glfw
 			CurrentMouseButtonFunction = fun;
 			CurrentMouseButtonFunctionPointer = *LambdaMouseButtonFunctionWrapper;
 			CurrentMouseButtonFunctionPointerRaw = *MouseButtonFunctionPointerWrapper;
+			glfwSetMouseButtonCallback(m_window, CurrentMouseButtonFunctionPointerRaw);
 		}
 
-		void Window::SetMouseButtonCallback(MouseButtonFunctionPointer fun)
+		void Window::SetMouseButtonCallback(MouseButtonFunctionPointer* fun)
 		{
 			CurrentMouseButtonFunctionPointer = fun;
 			CurrentMouseButtonFunctionPointerRaw = *MouseButtonFunctionPointerWrapper;
+			glfwSetMouseButtonCallback(m_window, CurrentMouseButtonFunctionPointerRaw);
 		}
 
-		void Window::SetMouseButtonCallback(MouseButtonFunctionPointerRaw fun)
+		void Window::SetMouseButtonCallback(MouseButtonFunctionPointerRaw* fun)
 		{
 			CurrentMouseButtonFunctionPointerRaw = fun;
+			glfwSetMouseButtonCallback(m_window, CurrentMouseButtonFunctionPointerRaw);
 		}
 
 	//Cursor Position
@@ -74,17 +78,20 @@ namespace glfw
 			CurrentCursorPositionFunction = fun;
 			CurrentCursorPositionFunctionPointer = *LambdaCursorPositionFunctionWrapper;
 			CurrentCursorPositionFunctionPointerRaw = *CursorPositionFunctionPointerWrapper;
+			glfwSetCursorPosCallback(m_window, CurrentCursorPositionFunctionPointerRaw);
 		}
 
-		void Window::SetCursorPositionCallback(CursorPositionFunctionPointer fun)
+		void Window::SetCursorPositionCallback(CursorPositionFunctionPointer* fun)
 		{
 			CurrentCursorPositionFunctionPointer = fun;
 			CurrentCursorPositionFunctionPointerRaw = *CursorPositionFunctionPointerWrapper;
+			glfwSetCursorPosCallback(m_window, CurrentCursorPositionFunctionPointerRaw);
 		}
 
-		void Window::SetCursorPositionCallback(CursorPositionFunctionPointerRaw fun)
+		void Window::SetCursorPositionCallback(CursorPositionFunctionPointerRaw* fun)
 		{
 			CurrentCursorPositionFunctionPointerRaw = fun;
+			glfwSetCursorPosCallback(m_window, CurrentCursorPositionFunctionPointerRaw);
 		}
 
 	//Cursor Enter
@@ -114,17 +121,20 @@ namespace glfw
 			CurrentCursorEnterFunction = fun;
 			CurrentCursorEnterFunctionPointer = *LambdaCursorEnterFunctionWrapper;
 			CurrentCursorEnterFunctionPointerRaw = *CursorEnterFunctionPointerWrapper;
+			glfwSetCursorEnterCallback(m_window, CurrentCursorEnterFunctionPointerRaw);
 		}
 
-		void Window::SetCursorEnterCallback(CursorEnterFunctionPointer fun)
+		void Window::SetCursorEnterCallback(CursorEnterFunctionPointer* fun)
 		{
 			CurrentCursorEnterFunctionPointer = fun;
 			CurrentCursorEnterFunctionPointerRaw = *CursorEnterFunctionPointerWrapper;
+			glfwSetCursorEnterCallback(m_window, CurrentCursorEnterFunctionPointerRaw);
 		}
 
-		void Window::SetCursorEnterCallback(CursorEnterFunctionPointerRaw fun)
+		void Window::SetCursorEnterCallback(CursorEnterFunctionPointerRaw* fun)
 		{
 			CurrentCursorEnterFunctionPointerRaw = fun;
+			glfwSetCursorEnterCallback(m_window, CurrentCursorEnterFunctionPointerRaw);
 		}
 
 
@@ -155,17 +165,20 @@ namespace glfw
 			CurrentScrollFunction = fun;
 			CurrentScrollFunctionPointer = *LambdaScrollFunctionWrapper;
 			CurrentScrollFunctionPointerRaw = *ScrollFunctionPointerWrapper;
+			glfwSetScrollCallback(m_window, CurrentScrollFunctionPointerRaw);
 		}
 
-		void Window::SetScrollCallback(ScrollFunctionPointer fun)
+		void Window::SetScrollCallback(ScrollFunctionPointer* fun)
 		{
 			CurrentScrollFunctionPointer = fun;
 			CurrentScrollFunctionPointerRaw = *ScrollFunctionPointerWrapper;
+			glfwSetScrollCallback(m_window, CurrentScrollFunctionPointerRaw);
 		}
 
-		void Window::SetScrollCallback(ScrollFunctionPointerRaw fun)
+		void Window::SetScrollCallback(ScrollFunctionPointerRaw* fun)
 		{
 			CurrentScrollFunctionPointerRaw = fun;
+			glfwSetScrollCallback(m_window, CurrentScrollFunctionPointerRaw);
 		}
 
 	//Key Action
@@ -196,22 +209,25 @@ namespace glfw
 			return DefaultKeyFunction;
 		}
 
-		void Window::SetKeyCallback(KeyFunction fun)
+		void Window::SetKeyCallback(Window::KeyFunction fun)
 		{
 			CurrentKeyFunction = fun;
 			CurrentKeyFunctionPointer = *LambdaKeyFunctionWrapper;
 			CurrentKeyFunctionPointerRaw = *KeyFunctionPointerWrapper;
+			glfwSetKeyCallback(m_window, CurrentKeyFunctionPointerRaw);
 		}
 
-		void Window::SetKeyCallback(KeyFunctionPointer fun)
+		void Window::SetKeyCallback(Window::KeyFunctionPointer* fun)
 		{
 			CurrentKeyFunctionPointer = fun;
 			CurrentKeyFunctionPointerRaw = *KeyFunctionPointerWrapper;
+			glfwSetKeyCallback(m_window, CurrentKeyFunctionPointerRaw);
 		}
 
-		void Window::SetKeyCallback(KeyFunctionPointerRaw fun)
+		void Window::SetKeyCallback(Window::KeyFunctionPointerRaw* fun)
 		{
 			CurrentKeyFunctionPointerRaw = fun;
+			glfwSetKeyCallback(m_window, CurrentKeyFunctionPointerRaw);
 		}
 
 	//Char
@@ -241,16 +257,19 @@ namespace glfw
 			CurrentCharFunction = fun;
 			CurrentCharFunctionPointer = *LambdaCharFunctionWrapper;
 			CurrentCharFunctionPointerRaw = *CharFunctionPointerWrapper;
+			glfwSetCharCallback(m_window, CurrentCharFunctionPointerRaw);
 		}
 
-		void Window::SetCharCallback(CharFunctionPointer fun)
+		void Window::SetCharCallback(CharFunctionPointer* fun)
 		{
 			CurrentCharFunctionPointer = fun;
 			CurrentCharFunctionPointerRaw = *CharFunctionPointerWrapper;
+			glfwSetCharCallback(m_window, CurrentCharFunctionPointerRaw);
 		}
 
-		void Window::SetCharCallback(CharFunctionPointerRaw fun)
+		void Window::SetCharCallback(CharFunctionPointerRaw* fun)
 		{
 			CurrentCharFunctionPointerRaw = fun;
+			glfwSetCharCallback(m_window, CurrentCharFunctionPointerRaw);
 		}
 }
