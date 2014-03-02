@@ -9,6 +9,7 @@ namespace glfw
 		GLFWgammaramp m_gammaramp;
 
 	public:
+		
 		unsigned short* GetRed();
 		void SetRed(unsigned short* red);
 		unsigned short* GetGreen();

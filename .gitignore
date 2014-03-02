@@ -26,3 +26,6 @@ glfw-cxx.sublime-*
 
 run_simple.sh
 debug_simple.sh
+docs/html/*
+docs/latex/*
+docs/man/*
