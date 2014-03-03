@@ -37,4 +37,4 @@ __glfw-cxx__ is simply a C++ OOP wrapper over plain, C, GLFW, along with a few e
 Documentation
 ----
 
-Crap I forgot about this I'll be back in a second to write it
+Documentation in progress.
