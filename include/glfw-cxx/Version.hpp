@@ -4,6 +4,8 @@
 
 namespace glfw
 {
+	/*!\brief The namespace for GLFW version info
+	 */
 	namespace VersionInfo
 	{
 		int major;

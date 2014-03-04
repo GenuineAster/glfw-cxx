@@ -21,7 +21,7 @@ namespace glfw
 
 	void Error::FunctionPointerWrapper(int error, const char* description)
 	{
-		CurrentErrorFunctionPointer({error, description});
+		CurrentErrorFunctionPointer({static_cast<ErrorCode>(error), description});
 	}
 
 	Error::Function Error::GetDefaultErrorCallback()
@@ -56,6 +56,6 @@ namespace glfw
 		return temp;
 	}
 
-	Error::Error(int error_, const char* description_): 
+	Error::Error(ErrorCode error_, const char* description_): 
 		error{static_cast<ErrorCode>(error_)}, description{description_} {}
 }

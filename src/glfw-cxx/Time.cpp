@@ -7,8 +7,8 @@ namespace glfw
 		return glfwGetTime();
 	}
 
-	void Time::Set(double time_)
+	void Time::Set(double time)
 	{
-		glfwSetTime(time_);
+		glfwSetTime(time);
 	}
 }

@@ -10,11 +10,11 @@
 #include <string>
 
 /*! 
-  * The GLFW namespace
+  * \brief The GLFW namespace
   */
 namespace glfw
 {
-	/*! @brief Client API function pointer type.
+	/*! \brief Client API function pointer type.
 	 *
 	 *  Generic function pointer used for returning client API function pointers
 	 *  without forcing a cast from a regular pointer.
@@ -24,7 +24,7 @@ namespace glfw
 	class Window;
 
 	/*!
-	 * The Context namespace
+	 * \brief The Context namespace
 	 */
 	namespace Context
 	{

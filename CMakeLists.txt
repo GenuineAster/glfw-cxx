@@ -3,7 +3,7 @@ project( glfw-cxx )
 
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
 set( GLFW-CXX_BUILD_SHARED_LIBS TRUE CACHE BOOL "Build shared llibraries." )
-set( GLFW-CXX_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation." )
+set( GLFW-CXX_BUILD_DOCS TRUE CACHE BOOL "Build Doxygen documentation." )
 set( GLFW-CXX_BUILD_EXAMPLES TRUE CACHE BOOL "Build glfw-cxx examples." )
 
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -77,8 +77,10 @@ if( WIN32 )
 	target_link_libraries(${CMAKE_PROJECT_NAME} opengl32)
 endif()
 
-if( GLFW-CXX_BUILD_DOC )
-	add_subdirectory( doc )
+if( GLFW-CXX_BUILD_DOCS )
+    set(DOXYGEN_SKIP_DOT TRUE)
+    find_package(Doxygen)
+	add_subdirectory( docs )
 endif()
 
 

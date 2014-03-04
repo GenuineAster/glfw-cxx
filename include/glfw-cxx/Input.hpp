@@ -2,6 +2,8 @@
 
 namespace glfw
 {
+	/*! \brief The Key or Mouse Button modifiers. 
+	 */
 	enum Modifier
 	{
 		Shift = 0x0001,
@@ -10,6 +12,8 @@ namespace glfw
 		Super = 0x0008
 	};
 
+	/*! \brief A list of the keys supported by GLFW.
+	 */
 	enum Key
 	{
 		Unknown = -1,
@@ -136,6 +140,8 @@ namespace glfw
 		Last = Menu
 	};
 
+	/*! \brief A list of the Mouse Buttons supported by GLFW
+	 */
 	enum MouseButton
 	{
 		Button1 = 0,
@@ -153,6 +159,9 @@ namespace glfw
 		ButtonMiddle = Button3
 	};
 
+	/* \brief A list of joysticks.
+	 *\warning Not all of these joysticks are plugged in. Please follow normal glfw-cxx procedure as to checking whether a joystick is plugged in or not.
+	 */
 	enum Joystick
 	{
 		Joystick1 = 0,
@@ -174,6 +183,8 @@ namespace glfw
 		JoystickLast = Joystick16
 	};
 
+	/* \brief A list of possible actions for keys
+	 */
 	enum KeyAction
 	{
 		Press,
@@ -181,5 +192,7 @@ namespace glfw
 		Repeat
 	};
 
+	/* \brief A list of possible actions for mouse buttons
+	 */
 	using ButtonAction = KeyAction;
 }
