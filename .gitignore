@@ -29,3 +29,4 @@ debug_simple.sh
 docs/html/*
 docs/latex/*
 docs/man/*
+docs/Doxyfile
