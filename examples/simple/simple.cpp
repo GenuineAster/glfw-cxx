@@ -2,12 +2,6 @@
 #include <cstdlib>
 #include <iostream>
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-	if (key == glfw::Key::Escape && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-}
-
 int main(void)
 {
 	glfw::Window window;
@@ -15,7 +9,6 @@ int main(void)
 	window.Create(640, 480, "Simple example");
 
 	window.MakeContextCurrent();
-	//window.SetKeyCallback(key_callback);
 
 	while(!window.ShouldClose())
 	{
