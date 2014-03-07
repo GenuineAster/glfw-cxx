@@ -37,4 +37,4 @@ __glfw-cxx__ is simply a C++ OOP wrapper over plain, C, GLFW, along with a few e
 Documentation
 ----
 
-You can view the documentation at http://glfw-cxx.destrock.com
+You can view the documentation at http://glfw-cxx.destrock.com/docs/
