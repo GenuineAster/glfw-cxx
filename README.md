@@ -38,3 +38,9 @@ Documentation
 ----
 
 You can view the documentation at http://glfw-cxx.destrock.com/docs/
+
+----
+Note
+----
+
+I try to keep this wrapper up-to-date with the current git version of GLFW.
