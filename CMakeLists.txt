@@ -65,18 +65,6 @@ include_directories( ${INC_DIR} )
 
 add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
 
-
-if( UNIX )
-	target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
-elseif( GLFW_FOUND )
-	target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
-endif()
-
-if( WIN32 )
-	target_link_libraries(${CMAKE_PROJECT_NAME} gdi32)
-	target_link_libraries(${CMAKE_PROJECT_NAME} opengl32)
-endif()
-
 if( GLFW-CXX_BUILD_DOCS )
 	configure_file(${CMAKE_BINARY_DIR}/docs/Doxyfile.in ${CMAKE_BINARY_DIR}/docs/Doxyfile @ONLY)
     set(DOXYGEN_SKIP_DOT TRUE)
