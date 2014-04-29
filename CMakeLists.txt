@@ -1,6 +1,8 @@
 cmake_minimum_required( VERSION 2.8 )
 project( glfw-cxx )
 
+include(${CMAKE_SOURCE_DIR}/cmake/Config.cmake)
+
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type." FORCE )
 set( GLFW-CXX_BUILD_SHARED_LIBS TRUE CACHE BOOL "Build shared llibraries." )
 set( GLFW-CXX_BUILD_DOCS TRUE CACHE BOOL "Build Doxygen documentation." )
@@ -76,3 +78,15 @@ endif()
 if( GLFW-CXX_BUILD_EXAMPLES )
 	include(${CMAKE_SOURCE_DIR}/examples/CMakeLists.txt)
 endif()
+
+install(
+    DIRECTORY include/${CMAKE_PROJECT_NAME}
+    DESTINATION include
+    COMPONENT devel
+)
+
+install(
+    TARGETS ${CMAKE_PROJECT_NAME}
+    LIBRARY DESTINATION lib COMPONENT bin
+    ARCHIVE DESTINATION lib COMPONENT dev
+)
