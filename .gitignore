@@ -30,3 +30,5 @@ docs/html/*
 docs/latex/*
 docs/man/*
 docs/Doxyfile
+
+build/
