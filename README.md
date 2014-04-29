@@ -7,7 +7,6 @@ I wanted an up-to-date, OOP version of GLFW, but couldn't find one. Here's my at
 
 
 
-----
 Installation
 ----
 
@@ -16,13 +15,12 @@ To install glfw-cxx, just run the following:
 ```bash
 $ git clone http://github.com/Mischa-Alff/glfw-cxx.git glfw-cxx
 $ cd glfw-cxx
-$ cmake .
+$ mkdir build && cmake ..
 $ make -j4
 $ sudo make install
 ```
 
 
-----
 Why should I use __glfw-cxx__?
 ----
 
@@ -33,13 +31,11 @@ __glfw-cxx__ is simply a C++ OOP wrapper over plain, C, GLFW, along with a few e
 - No more need to call glfwInit()!
 - And probably a few more things I can't remember at this very moment!
 
-----
 Documentation
 ----
 
 You can view the documentation at http://glfw-cxx.destrock.com/docs/
 
-----
 Note
 ----
 
