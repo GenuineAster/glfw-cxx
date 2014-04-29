@@ -66,7 +66,7 @@ include_directories( ${INC_DIR} )
 add_library( ${CMAKE_PROJECT_NAME} ${LIB_TYPE} ${SOURCES} )
 
 if( GLFW-CXX_BUILD_DOCS )
-	configure_file(${CMAKE_BINARY_DIR}/docs/Doxyfile.in ${CMAKE_BINARY_DIR}/docs/Doxyfile @ONLY)
+	configure_file(${CMAKE_SOURCE_DIR}/docs/Doxyfile.in ${CMAKE_SOURCE_DIR}/docs/Doxyfile @ONLY)
     set(DOXYGEN_SKIP_DOT TRUE)
     find_package(Doxygen)
 	add_subdirectory( docs )
